@@ -23,7 +23,7 @@ ___
 
    - **Once you have a fully functional feature:**
       -  `git merge master` <---- Merges your branch to the master repo.
-      -  If you get any conflicts merging, contact me to help resolve them.
+      -  We will help resolve merge conflicts if they come up.
 
 
 ##### Initial Instructions
