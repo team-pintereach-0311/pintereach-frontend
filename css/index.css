@@ -163,5 +163,9 @@ p {
   width: 100%;
 }
 .top-header h1 {
-  color: blue;
+  color: red;
+  font-size: 4.3rem;
+}
+.top-header .header-img {
+  width: 100%;
 }
