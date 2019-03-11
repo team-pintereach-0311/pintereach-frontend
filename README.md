@@ -42,6 +42,7 @@ Frontend react dev
 - Create a register page
 - Create a homepage that allows users to see other users boards
 - Add functionality to create boards and post article cover pages (or titles, or links) to them.
+
 UI dev
 - Create a landing page(can use info from the proposal part of the tdd)
 - Create a login/register button on the landing page
