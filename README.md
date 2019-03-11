@@ -22,7 +22,7 @@ ___
    - You can then `git commit` into that branch with all your changes.
 
    - **Once you have a fully functional feature:**
-      -  `git merge master` <---- Merges your branch to the master repo.
+      -  `git pull origin master` <---- Merges your branch to the master repo.
       -  We will help resolve merge conflicts if they come up.
 
 
