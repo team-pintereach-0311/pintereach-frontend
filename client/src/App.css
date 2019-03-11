@@ -1,0 +1,43 @@
+html {
+  background-color: #dcdee0;
+}
+
+/* Signup & Login */
+.step-1,
+.step-2 {
+  width: 95%;
+  text-align: center;
+  margin: 100px auto;
+  border: 1px solid darkgray;
+  border-radius: 3px;
+  padding: 0 20px 20px 20px;
+  max-width: 300px;
+  background-color: #fff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  padding: 5px;
+  margin: 2.5px 0;
+  width: 100%;
+}
+button {
+  width: 40%;
+  margin: 10px;
+}
+
+h1 {
+  font-size: 2rem;
+  padding: 20px 0;
+}
+
+h2 {
+  font-size: 1.05rem;
+  padding-bottom: 20px;
+}
