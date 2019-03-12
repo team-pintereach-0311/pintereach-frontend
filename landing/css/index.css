@@ -224,3 +224,11 @@ p {
   height: 300px;
   width: 500px;
 }
+.main-content {
+  padding: 0 32px;
+  height: 360px;
+  border: 1px solid black;
+}
+.main-content .main-content-container {
+  display: flex;
+}
