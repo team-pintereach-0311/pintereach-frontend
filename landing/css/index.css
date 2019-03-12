@@ -153,19 +153,74 @@ p {
   font-size: 1.6rem;
   line-height: 1.4;
 }
-.container {
-  max-width: 800px;
+.home-container {
+  max-width: 1285px;
   width: 100%;
   margin: 0 auto;
 }
-.top-header {
+.nav-container {
+  height: 10rem;
+  padding: 0 32px;
+}
+.nav-container .nav-bar {
   display: flex;
-  width: 100%;
+  justify-content: flex-end;
+  max-width: 1150px;
+  height: 10rem;
+  align-items: center;
 }
-.top-header h1 {
-  color: red;
-  font-size: 4.3rem;
+.nav-container a {
+  font-size: 1.6rem;
+  align-items: center;
+  color: #666666;
+  margin: auto 32px auto 0;
+  text-decoration-line: none;
 }
-.top-header .header-img {
+.nav-container a:hover {
+  color: #f77754;
+}
+.nav-container nav:last-of-type {
+  margin-right: 0;
+}
+.head {
+  padding: 0 32px;
+  height: 590px;
+}
+.head .head-blank {
+  margin: 0 32px;
+  padding-top: 32px;
+  padding-bottom: 64px;
+  height: 590px;
+}
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
+  height: 492px;
+  align-items: center;
+}
+.content-container .header-content {
+  display: block;
+  width: 42%;
+}
+.content-container .header-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1.6rem;
+}
+.content-container .header-content .btn-container {
+  padding-top: 3.2rem;
+  display: flex;
+  justify-content: center;
+}
+.content-container .header-content .btn-container button {
+  border-radius: 2rem;
+  padding: 1rem;
+  justify-content: center;
+}
+.header-img {
+  width: 10%;
+}
+.header-img img {
+  height: 300px;
+  width: 500px;
 }
