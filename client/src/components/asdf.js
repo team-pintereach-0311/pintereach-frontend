@@ -2,8 +2,13 @@ import React from "react";
 import { getData } from "../actions";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
+import ArticleFeed from "./ArticleFeed";
+import NavBar from "./NavBar";
+import Categories from "./Categories2";
+import UserProfile from "./UserProfile";
+import { Route } from "react-router-dom";
 
-class Home extends React.Component {
+class UserHome extends React.Component {
   componentDidMount() {
     this.props.getData();
   }
@@ -14,7 +19,7 @@ class Home extends React.Component {
     }
     return (
       <div className="step-3">
-        <p>Home is working</p>
+        <ArticleFeed articles={this.props.articles} />
       </div>
     );
   }
@@ -28,4 +33,4 @@ const mapStateToProps = ({ articles, fetchingArticles }) => ({
 export default connect(
   mapStateToProps,
   { getData }
-)(Home);
+)(UserHome);

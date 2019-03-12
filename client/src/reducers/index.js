@@ -3,7 +3,8 @@ import {
   SIGNUP_START,
   LOGIN_SUCCESS,
   FETCH_DATA_START,
-  FETCH_DATA_FAILURE
+  FETCH_DATA_FAILURE,
+  FETCH_DATA_SUCCESS
 } from "../actions";
 
 const initialState = {
@@ -12,7 +13,7 @@ const initialState = {
   error: "",
   token: localStorage.getItem("token"),
   fetchingArticles: false,
-  errorStatusCode: ""
+  errorStatusCode: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -38,10 +39,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         fetchingArticles: true
       };
+    case FETCH_DATA_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        errorStatusCode: null,
+        fetchingArticles: false,
+        articles: action.payload
+      };
     case FETCH_DATA_FAILURE:
       return {
         ...state,
-        error: action.payload.data.error,
+        error: action.payload.status,
         errorStatusCode: action.payload.status,
         fetchingArticles: false
       };
