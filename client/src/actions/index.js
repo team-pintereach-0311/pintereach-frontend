@@ -11,7 +11,6 @@ export const login = creds => dispatch => {
   return axios
     .post("https://testsite.akiradj.com/auth/login", creds)
     .then(res => {
-      console.log(res);
       localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
     });
@@ -25,5 +24,19 @@ export const signup = creds => dispatch => {
       console.log(res);
       // localStorage.setItem("token", res.data.payload);
       // dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
+    });
+};
+
+export const FETCH_DATA_START = "FETCH_DATA_START";
+export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
+export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+
+export const getData = () => dispatch => {
+  dispatch({ type: FETCH_DATA_START });
+  axios
+    .get("https://testsite.akiradj.com/auth/login")
+    .then(res => console.log(res))
+    .catch(err => {
+      dispatch({ type: FETCH_DATA_FAILURE, payload: err.response });
     });
 };

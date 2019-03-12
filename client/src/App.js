@@ -10,10 +10,9 @@ export default function App() {
   return (
     <Router>
       <div className="app">
+        <Route exact path="/" component={Signup} />
         <Route exact path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/home" component={Home} />
-        {/* <PrivateRoute exact path="/home" component={Home} /> */}
+        <PrivateRoute exact path="/home" component={Home} />
       </div>
     </Router>
   );
