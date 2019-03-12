@@ -1,5 +1,6 @@
 html {
   background-color: #dcdee0;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Signup & Login */
@@ -41,4 +42,21 @@ h1 {
 h2 {
   font-size: 1.05rem;
   padding-bottom: 20px;
+}
+
+.navbar {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.navbar {
+  font-weight: 700;
+}
+
+.navbar > ul {
+  display: flex;
+}
+
+.navbar > ul > li .active {
+  background-color: red;
 }

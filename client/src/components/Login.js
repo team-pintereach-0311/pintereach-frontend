@@ -24,6 +24,7 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
+    console.log(this.state.credentials);
     this.props
       .login(this.state.credentials)
       .then(() => this.props.history.push("/home"));
@@ -51,6 +52,9 @@ class Login extends React.Component {
               onChange={this.changeHandler}
               required
             />
+            <section className="error-message">
+              {this.props.error && <p>{this.props.error}</p>}
+            </section>
             <button>
               {this.props.loggingIn ? (
                 <Loader type="TailSpin" color="red" height={18} width={18} />
