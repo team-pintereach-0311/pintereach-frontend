@@ -1,7 +1,17 @@
 import React from "react";
+import { getData } from "../actions";
+import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
+  componentDidMount() {
+    this.props.getData();
+  }
+
   render() {
+    if (this.props.fetchingArticles) {
+      return <Loader type="TailSpin" color="blue" height={80} width={80} />;
+    }
     return (
       <div className="step-3">
         <p>Home is working</p>
@@ -9,3 +19,13 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ articles, fetchingArticles }) => ({
+  articles,
+  fetchingArticles
+});
+
+export default connect(
+  mapStateToProps,
+  { getData }
+)(Home);

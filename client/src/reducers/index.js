@@ -1,10 +1,18 @@
-import { LOGIN_START, SIGNUP_START, LOGIN_SUCCESS } from "../actions";
+import {
+  LOGIN_START,
+  SIGNUP_START,
+  LOGIN_SUCCESS,
+  FETCH_DATA_START,
+  FETCH_DATA_FAILURE
+} from "../actions";
 
 const initialState = {
   articles: [],
   loggingIn: false,
   error: "",
-  token: localStorage.getItem("token")
+  token: localStorage.getItem("token"),
+  fetchingArticles: false,
+  errorStatusCode: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +32,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         loggingIn: false,
         token: action.payload
+      };
+    case FETCH_DATA_START:
+      return {
+        ...state,
+        fetchingArticles: true
+      };
+    case FETCH_DATA_FAILURE:
+      return {
+        ...state,
+        error: action.payload.data.error,
+        errorStatusCode: action.payload.status,
+        fetchingArticles: false
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Signup.css";
 import { connect } from "react-redux";
@@ -25,7 +25,9 @@ class Signup extends React.Component {
 
   signup = e => {
     e.preventDefault();
-    this.props.signup(this.state.signupCredentials);
+    this.props
+      .signup(this.state.signupCredentials)
+      .then(() => this.props.history.push("/home"));
   };
 
   render() {
