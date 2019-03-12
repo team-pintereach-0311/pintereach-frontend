@@ -1,12 +1,27 @@
-.nav-bar {
-    display: flex;
-    justify-content: flex-end;
+.nav-container {
     // width: 100%;
-    margin: 2rem 0 2rem;
+    height: 10rem;
+    padding: 0 32px;
 
-    nav {
+    .nav-bar {
+        display: flex;
+        justify-content: flex-end;
+        max-width: 1150px;
+        // margin: auto 32px auto 0;
+        height: 10rem;
+        align-items: center;
+    }
+
+    a {
         font-size: 1.6rem;
-        margin-right: 3.2rem;
+        align-items: center;
+        color: @nav-font;
+        margin: auto 32px auto 0;
+        text-decoration-line: none;
+
+        &:hover {
+            color: black;
+        }
     }
     
     nav:last-of-type {
