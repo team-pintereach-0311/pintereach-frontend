@@ -61,7 +61,7 @@ class Login extends React.Component {
           </form>
         </section>
         <section className="account-false">
-          No account? <Link to="/signup">Sign up</Link>
+          No account? <Link to="/">Sign up</Link>
         </section>
       </div>
     );
