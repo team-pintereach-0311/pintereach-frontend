@@ -28,7 +28,8 @@ input {
   width: 100%;
 }
 button {
-  width: 40%;
+  width: 100px;
+  height: 25px;
   margin: 10px;
 }
 

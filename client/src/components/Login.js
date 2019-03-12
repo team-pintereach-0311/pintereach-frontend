@@ -1,6 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
+import { connect } from "react-redux";
+import { login } from "../actions";
+import Loader from "react-loader-spinner";
 
 class Login extends React.Component {
   state = {
@@ -17,6 +20,13 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
       }
     });
+  };
+
+  login = e => {
+    e.preventDefault();
+    this.props
+      .login(this.state.credentials)
+      .then(() => this.props.history.push("/home"));
   };
 
   render() {
@@ -41,7 +51,13 @@ class Login extends React.Component {
               onChange={this.changeHandler}
               required
             />
-            <button>Log in</button>
+            <button>
+              {this.props.loggingIn ? (
+                <Loader type="TailSpin" color="red" height={18} width={18} />
+              ) : (
+                "Log in"
+              )}
+            </button>
           </form>
         </section>
         <section className="account-false">
@@ -52,4 +68,12 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = ({ error, loggingIn }) => ({
+  error,
+  loggingIn
+});
+
+export default connect(
+  mapStateToProps,
+  { login }
+)(Login);

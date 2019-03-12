@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Signup.css";
+import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
+import { signup } from "../actions";
 
 class Signup extends React.Component {
   state = {
@@ -22,7 +25,7 @@ class Signup extends React.Component {
 
   signup = e => {
     e.preventDefault();
-    console.log("signup trigger working", this.state);
+    this.props.signup(this.state.signupCredentials);
   };
 
   render() {
@@ -58,15 +61,29 @@ class Signup extends React.Component {
               onChange={this.changeHandler}
               required
             />
-            <button>Sign up</button>
+            <button>
+              {this.props.signingUp ? (
+                <Loader type="TailSpin" color="red" height={18} width={18} />
+              ) : (
+                "Sign up"
+              )}
+            </button>
           </form>
         </section>
         <section className="account-true">
-          Already have an account? <Link to="/">Log in</Link>
+          Already have an account? <Link to="/login">Log in</Link>
         </section>
       </div>
     );
   }
 }
 
-export default Signup;
+const mapStateToProps = ({ error, signingUp }) => ({
+  error,
+  signingUp
+});
+
+export default connect(
+  mapStateToProps,
+  { signup }
+)(Signup);
