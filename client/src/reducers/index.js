@@ -9,7 +9,10 @@ import {
   DELETE_SUCCESS,
   ADD_STUDY_START,
   ADD_STUDY_SUCCESS,
-  ADD_STUDY_FAILURE
+  ADD_STUDY_FAILURE,
+  LOGOUT_START,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -23,7 +26,8 @@ const initialState = {
   signingUp: false,
   message: "",
   deletingArticle: false,
-  id: 8
+  id: 8,
+  loggingOut: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -84,6 +88,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         addingStudy: true
+      };
+    case LOGOUT_START:
+      return {
+        ...state,
+        loggingOut: true
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        logginOut: false
       };
     default:
       return state;

@@ -60,7 +60,7 @@ export const DELETE_FAILURE = "DELETE_FAILURE";
 export const deleteArticle = (id, user_id) => dispatch => {
   dispatch({ type: DELETE_START });
   axios
-    .delete(`https://testsite.akiradj.com/users/8/articles/${id}`, {
+    .delete(`https://testsite.akiradj.com/users/${user_id}/articles/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => console.log("data", res))
@@ -86,4 +86,14 @@ export const addStudy = study => dispatch => {
     .catch(err => {
       console.log(err);
     });
+};
+
+export const LOGOUT_START = "LOGOUT_START";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT_START });
+  localStorage.clear();
+  dispatch({ type: LOGIN_SUCCESS });
 };

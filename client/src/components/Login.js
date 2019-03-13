@@ -4,6 +4,7 @@ import "../styles/Login.css";
 import { connect } from "react-redux";
 import { login } from "../actions";
 import Loader from "react-loader-spinner";
+
 import styled from "styled-components";
 import { Pin } from "styled-icons/boxicons-solid/Pin";
 
