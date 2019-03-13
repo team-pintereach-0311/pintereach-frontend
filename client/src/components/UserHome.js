@@ -7,10 +7,6 @@ import { PlusCircle } from "styled-icons/boxicons-regular/PlusCircle";
 import { deleteArticle, getData } from "../actions";
 import ArticleFeed from "./ArticleFeed";
 
-import UserCategories from "./UserCategories";
-import UserPin from "./UserPin";
-import UserProfile from "./UserProfile";
-
 const AddWhite = styled(PlusCircle)`
   color: white;
   height: 25px;
@@ -49,8 +45,6 @@ class UserHome extends React.Component {
 
     return (
       <div className="main">
-        {/* <Route exact path="/categories" component={UserCategories} /> */}
-
         <Route
           exact
           path="/home"
@@ -70,9 +64,6 @@ class UserHome extends React.Component {
             </div>
           )}
         />
-        {/* <Route path="/pin" component={UserPin} />
-        
-        <Route exact path="/profile" component={UserProfile} /> */}
       </div>
     );
   }

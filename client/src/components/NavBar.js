@@ -43,7 +43,7 @@ const NavBar = () => {
         <HomeBlack />
       </NavLink>
 
-      <NavLink to="/categories" activeClassName="activeNavBtn">
+      <NavLink to="/boards" activeClassName="activeNavBtn">
         <CategoriesBlack />
       </NavLink>
 
