@@ -1,12 +1,13 @@
 .head {
-    .container(590px);
-    // background-color: #8186d5;
+    .container(80%);
+    border: 1px solid rosybrown;
 
     .head-blank {
         margin: 0 32px;
         padding-top: 32px;
         padding-bottom: 64px;
-        height: 590px;
+        height: 80%;
+        // border: 1px dotted blue;
     }
 }
 
@@ -14,13 +15,23 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 492px;
-    // border: 1px dashed black;
+    border: 2px dashed black;
     align-items: center;
 
+    @media @phone {
+        .mobile-view();
+        flex-direction: column-reverse;
+    }
+
     .header-content {
-        display: block;
         width: 42%;
+        border: 1px solid green;
+        margin-right: 2%;
+
+        @media @phone {
+            width: 100%;
+            margin-right: 0;
+        }
         
         h1 {
             font-size: 4rem;
@@ -30,29 +41,33 @@
         .btn-container {
             padding-top: 3.2rem;
             display: flex;
-            justify-content: center;
+
+            @media @phone {
+                justify-content: center;
+            }
 
             button {
                 border-radius: 2rem;
                 padding: 1rem;
-                justify-content: center;
             }
         }
     }
-
-
-    
     
 }
 
 // placeholder for now
 .header-img{
-    width: 10%;
+    width: 56%;
+    height: 100%;
+    // border: 1px solid red;
+    
+    @media @phone {
+        display: none;
+    }
 
     img {
-        height: 300px;
-        width: 500px;
-
+        height: 100%;
+        width: 100%;
     }
 }
 
