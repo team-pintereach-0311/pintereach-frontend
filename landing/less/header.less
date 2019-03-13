@@ -1,13 +1,12 @@
 .head {
-    .container(80%);
-    border: 1px solid rosybrown;
+    .container(100%);
+    border: 1px solid blueviolet;
 
     .head-blank {
         margin: 0 32px;
         padding-top: 32px;
         padding-bottom: 64px;
         height: 80%;
-        // border: 1px dotted blue;
     }
 }
 
@@ -15,22 +14,25 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    border: 2px dashed black;
     align-items: center;
 
     @media @phone {
         .mobile-view();
-        flex-direction: column-reverse;
+        justify-content: center;
+        border: 1px dashed green;
     }
 
     .header-content {
         width: 42%;
-        border: 1px solid green;
         margin-right: 2%;
 
         @media @phone {
             width: 100%;
             margin-right: 0;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            // justify-content: center;
         }
         
         h1 {
@@ -59,7 +61,6 @@
 .header-img{
     width: 56%;
     height: 100%;
-    // border: 1px solid red;
     
     @media @phone {
         display: none;

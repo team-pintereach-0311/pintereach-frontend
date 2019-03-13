@@ -138,14 +138,7 @@ html {
 }
 html,
 body {
-  font-family: 'Ubuntu', sans-serif;
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: 'Russo One', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 h2 {
   font-size: 3.2rem;
@@ -188,8 +181,8 @@ p {
 }
 .head {
   padding: 0 32px;
-  height: 80%;
-  border: 1px solid rosybrown;
+  height: 100%;
+  border: 1px solid blueviolet;
 }
 .head .head-blank {
   margin: 0 32px;
@@ -201,25 +194,27 @@ p {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  border: 2px dashed black;
   align-items: center;
 }
 @media (max-width: 500px) {
   .content-container {
     display: flex;
     flex-direction: column;
-    flex-direction: column-reverse;
+    justify-content: center;
+    border: 1px dashed green;
   }
 }
 .content-container .header-content {
   width: 42%;
-  border: 1px solid green;
   margin-right: 2%;
 }
 @media (max-width: 500px) {
   .content-container .header-content {
     width: 100%;
     margin-right: 0;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
   }
 }
 .content-container .header-content h1 {
@@ -255,7 +250,6 @@ p {
 .main-content {
   padding: 0 32px;
   height: 80%;
-  border: 1px solid yellowgreen;
 }
 .main-content .main-content-container {
   display: flex;
@@ -277,9 +271,10 @@ p {
   height: 80%;
   border-right: 1px solid #0a516d;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: 2.5rem;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
+  padding-top: 1rem;
   margin: 1.2rem;
 }
 @media (max-width: 500px) {
@@ -295,7 +290,10 @@ p {
   height: 80%;
   border-right: 1px solid #0a516d;
   align-items: center;
-  padding: 1rem;
+  padding-bottom: 2.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-top: 1rem;
   margin: 1.2rem;
 }
 @media (max-width: 500px) {
@@ -310,7 +308,10 @@ p {
 .main-content .main-content-container .para3 {
   height: 80%;
   align-items: center;
-  padding: 1rem;
+  padding-bottom: 2.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-top: 1rem;
   margin: 1.2rem;
 }
 .main-content .main-content-container .para3 h2 {
@@ -318,7 +319,6 @@ p {
 }
 .signup-btn {
   display: flex;
-  border: 1px solid red;
   justify-content: center;
   padding: 3rem;
 }
@@ -331,7 +331,6 @@ p {
   padding: 0 32px;
   height: 80%;
   width: 100%;
-  border: 1px solid fuchsia;
 }
 .organize .content-container {
   height: 100%;
@@ -346,17 +345,12 @@ p {
   }
 }
 .organize .content-container h2 {
-  border: 1px dashed green;
   margin-bottom: 1rem;
-}
-.organize .content-container p {
-  border: 1px solid red;
 }
 .preview {
   padding: 0 32px;
   height: 80%;
   width: 100%;
-  border: 1px solid fuchsia;
 }
 .preview .content-container {
   height: 100%;
@@ -371,17 +365,12 @@ p {
   }
 }
 .preview .content-container h2 {
-  border: 1px dashed green;
   margin-bottom: 1rem;
-}
-.preview .content-container p {
-  border: 1px solid red;
 }
 .collaborate {
   padding: 0 32px;
   height: 80%;
   width: 100%;
-  border: 1px solid fuchsia;
 }
 .collaborate .content-container {
   height: 100%;
@@ -396,9 +385,5 @@ p {
   }
 }
 .collaborate .content-container h2 {
-  border: 1px dashed green;
   margin-bottom: 1rem;
-}
-.collaborate .content-container p {
-  border: 1px solid red;
 }
