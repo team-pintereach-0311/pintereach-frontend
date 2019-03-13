@@ -40,9 +40,7 @@ class ArticleFeed extends React.Component {
       <div className="articles">
         {this.props.articles.map(article => (
           <div className="article-card" key={article.id}>
-            <a href={article.link} target="_blank">
-              {article.link}
-            </a>
+            <a href={article.link}>{article.link}</a>
             <RemoveCircleOutlineRed
               onClick={() => this.deleteArticle(article.id)}
             />
