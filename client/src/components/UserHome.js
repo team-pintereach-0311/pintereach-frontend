@@ -1,50 +1,85 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink, Route, Link } from "react-router-dom";
 import ArticleFeed from "./ArticleFeed";
 import styled from "styled-components";
 import { Home } from "styled-icons/boxicons-regular/Home";
 import { Search } from "styled-icons/boxicons-regular/Search";
 import { Categories } from "styled-icons/boxicons-solid/Categories";
 import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
-import { getData } from "../actions";
+import { getData, deleteArticle } from "../actions";
 import UserProfile from "./UserProfile";
 import UserCategories from "./UserCategories";
+import UserPin from "./UserPin";
+import { Notification } from "styled-icons/boxicons-regular/Notification";
+import { Pin } from "styled-icons/boxicons-solid/Pin";
 
 const UserBlack = styled(UserDetail)`
-  color: #000;
+  color: darkgray;
   height: 30px;
   width: 30px;
 `;
 
 const SearchBlack = styled(Search)`
-  color: #000;
+  color: darkgray;
   height: 30px;
   width: 30px;
 `;
 
 const HomeBlack = styled(Home)`
-  color: #000;
+  color: darkgray;
   height: 30px;
   width: 30px;
 `;
 
 const CategoriesBlack = styled(Categories)`
-  color: #000;
+  color: darkgray;
+  height: 30px;
+  width: 30px;
+`;
+const NotificationBlack = styled(Notification)`
+  color: darkgray;
   height: 30px;
   width: 30px;
 `;
 
+const PinRed = styled(Pin)`
+  color: red;
+  height: 25px;
+  width: 25px;
+`;
+
 class UserHome extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showMessage: false
+    };
+  }
+
   componentDidMount() {
     this.props.getData();
+    // setTimeout(() => this.setState({ showMessage: false }), 2000);
   }
 
   render() {
     if (this.props.fetchingArticles) {
-      return <Loader type="TailSpin" color="blue" height={80} width={80} />;
+      return (
+        <div className="loader">
+          <Loader type="TailSpin" color="#005995" height={40} width={40} />
+        </div>
+      );
     }
+
+    if (this.state.showMessage) {
+      return (
+        <div className="message">
+          <p>{this.props.message}</p>
+        </div>
+      );
+    }
+
     return (
       <div className="main">
         <div className="navbar">
@@ -57,6 +92,11 @@ class UserHome extends React.Component {
             <li>
               <NavLink to="/categories" activeClassName="active">
                 <CategoriesBlack /> Categories
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/notifications" activeClassName="active">
+                <NotificationBlack /> Notifications
               </NavLink>
             </li>
             <li>
@@ -75,22 +115,42 @@ class UserHome extends React.Component {
           exact
           path="/home"
           render={props => (
-            <ArticleFeed {...props} articles={this.props.articles} />
+            <div className="home">
+              <Link to="/pin">
+                <button>
+                  <PinRed />
+                  Pin a link
+                </button>
+              </Link>
+              <ArticleFeed
+                {...props}
+                articles={this.props.articles}
+                deleteArticle={this.props.deleteArticle}
+              />
+            </div>
           )}
         />
+        <Route exact path="/pin" component={UserPin} />
         <Route exact path="/categories" component={UserCategories} />
-        <Route exact path="/profile" componet={UserProfile} />
+        <Route exact path="/profile" component={UserProfile} />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ articles, fetchingArticles }) => ({
+const mapStateToProps = ({
   articles,
-  fetchingArticles
+  fetchingArticles,
+  message,
+  deletingArticle
+}) => ({
+  articles,
+  fetchingArticles,
+  message,
+  deletingArticle
 });
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, deleteArticle }
 )(UserHome);
