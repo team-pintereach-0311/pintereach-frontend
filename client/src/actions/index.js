@@ -11,7 +11,7 @@ export const login = creds => dispatch => {
   return axios
     .post("https://testsite.akiradj.com/auth/login", creds)
     .then(res => {
-      console.log(res.data.id);
+      console.log(res);
       localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     });
@@ -22,7 +22,8 @@ export const signup = creds => dispatch => {
   return axios
     .post("https://testsite.akiradj.com/auth/register", creds)
     .then(res => {
-      localStorage.setItem("token", res.data.token);
+      console.log(res);
+      // localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_START });
       return axios
         .post("https://testsite.akiradj.com/auth/login", creds)
@@ -37,15 +38,15 @@ export const FETCH_DATA_START = "FETCH_DATA_START";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 
-export const getData = () => dispatch => {
+export const getData = id => dispatch => {
   dispatch({ type: FETCH_DATA_START });
   axios
-    .get(`https://testsite.akiradj.com/users`, {
+    .get(`https://testsite.akiradj.com/users/${id}/articles`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
-    // .then(res => console.log("data", res.data.user))
     .then(res => {
-      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data.user });
+      console.log(res.data);
+      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_DATA_FAILURE, payload: err.response });
@@ -68,5 +69,21 @@ export const deleteArticle = id => dispatch => {
     })
     .catch(err => {
       dispatch({ type: DELETE_FAILURE, payload: err.response });
+    });
+};
+
+export const ADD_STUDY_START = "ADD_STUDY_START";
+export const ADD_STUDY_SUCCESS = "ADD_STUDY_SUCCESS";
+export const ADD_STUDY_FAILURE = "ADD_STUDY_FAILURE";
+
+export const addStudy = study => dispatch => {
+  dispatch({ type: ADD_STUDY_START });
+  axios
+    .post("https://testsite.akiradj.com/users/articles", study, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => console.log("ADD RES:", res))
+    .catch(err => {
+      console.log(err);
     });
 };

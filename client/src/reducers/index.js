@@ -6,28 +6,24 @@ import {
   FETCH_DATA_FAILURE,
   FETCH_DATA_SUCCESS,
   DELETE_START,
-  DELETE_SUCCESS
+  DELETE_SUCCESS,
+  ADD_STUDY_START,
+  ADD_STUDY_SUCCESS,
+  ADD_STUDY_FAILURE
 } from "../actions";
 
 const initialState = {
-  articles: [
-    { link: "https://www.google.com", id: 1 },
-    { link: "https://www.google.com", id: 2 },
-    { link: "https://www.google.com", id: 3 },
-    { link: "https://www.google.com", id: 4 },
-    { link: "https://www.google.com", id: 5 },
-    { link: "https://www.google.com", id: 6 },
-    { link: "https://www.google.com", id: 7 },
-    { link: "https://www.google.com", id: 8 }
-  ],
+  addingStudy: false,
+  articles: [],
   loggingIn: false,
   error: "",
   token: localStorage.getItem("token"),
   fetchingArticles: false,
   errorStatusCode: null,
-  signingUp: "",
+  signingUp: false,
   message: "",
-  deletingArticle: false
+  deletingArticle: false,
+  id: 8
 };
 
 const reducer = (state = initialState, action) => {
@@ -47,9 +43,9 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loggingIn: false,
-        signingUp: true,
         token: action.payload.token,
-        message: action.payload.message
+        message: action.payload.message,
+        id: action.payload.id
       };
     case FETCH_DATA_START:
       return {
@@ -83,6 +79,11 @@ const reducer = (state = initialState, action) => {
         error: "",
         errorStatusCode: null,
         articles: action.payload
+      };
+    case ADD_STUDY_START:
+      return {
+        ...state,
+        addingStudy: true
       };
     default:
       return state;

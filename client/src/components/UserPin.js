@@ -1,7 +1,5 @@
 import React from "react";
 
-function UserPin() {
-  return <p>hello from UserCategories</p>;
-}
+const UserPin = () => <h1>UserPin</h1>;
 
 export default UserPin;
