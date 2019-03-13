@@ -79,7 +79,7 @@ class UserHome extends React.Component {
           )}
         />
         <Route exact path="/categories" component={UserCategories} />
-        <Route exact path="/profile" componet={UserProfile} />
+        <Route exact path="/profile" component={UserProfile} />
       </div>
     );
   }

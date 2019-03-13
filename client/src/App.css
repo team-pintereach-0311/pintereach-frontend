@@ -1,19 +1,40 @@
 html {
-  background-color: #dcdee0;
   font-family: "Roboto", sans-serif;
+  height: 100%;
+  background-color: #fafafa;
+}
+
+h1 {
+  font-family: "Advent Pro", sans-serif;
+  font-size: 3rem;
+  padding: 20px 0;
+  font-weight: 600;
 }
 
 /* Signup & Login */
 .step-1,
 .step-2 {
-  width: 95%;
   text-align: center;
-  margin: 100px auto;
-  border: 1px solid darkgray;
-  border-radius: 3px;
+  margin: 100px auto 20px auto;
+  border: 1px solid #58718138;
+  border-radius: 2px;
   padding: 0 20px 20px 20px;
-  max-width: 300px;
+  max-width: 350px;
   background-color: #fff;
+}
+
+.account > a {
+  text-decoration: none;
+  color: #005995;
+  font-weight: 500;
+}
+
+.account {
+  margin: 0 15px;
+  margin-top: 5px;
+
+  padding-top: 15px;
+  border-top: 1px solid lightgray;
 }
 
 form {
@@ -24,24 +45,43 @@ form {
 }
 
 input {
-  padding: 5px;
+  box-sizing: border-box;
+  padding: 0 5px;
   margin: 2.5px 0;
   width: 100%;
-}
-button {
-  width: 100px;
-  height: 25px;
-  margin: 10px;
+  height: 35px;
+  cursor: text;
+  border: 1px solid lightgray;
+  border-radius: 2px;
 }
 
-h1 {
-  font-size: 2rem;
-  padding: 20px 0;
+/* input[type="password"]:focus {
+  outline: 2px solid #305d81;
+} */
+
+button {
+  width: 99%;
+  height: 31px;
+  margin: 10px 0;
+  background-color: #005995;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:focus {
+  outline: 0;
+}
+button:active {
+  background-color: #157cc0;
 }
 
 h2 {
   font-size: 1.05rem;
   padding-bottom: 20px;
+  line-height: 22.5px;
 }
 
 .navbar {
@@ -59,4 +99,9 @@ h2 {
 
 .navbar > ul > li .active {
   background-color: red;
+}
+
+footer {
+  text-align: center;
+  color: rgb(145, 143, 143);
 }
