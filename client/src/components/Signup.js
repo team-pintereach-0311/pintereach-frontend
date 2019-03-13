@@ -76,7 +76,7 @@ class Signup extends React.Component {
                 required
               />
               <button>
-                {this.props.signingUp ? (
+                {this.props.loggingIn ? (
                   <Loader
                     type="TailSpin"
                     color="white"
@@ -101,9 +101,10 @@ class Signup extends React.Component {
   }
 }
 
-const mapStateToProps = ({ error, signingUp }) => ({
+const mapStateToProps = ({ error, signingUp, loggingIn }) => ({
   error,
-  signingUp
+  signingUp,
+  loggingIn
 });
 
 export default connect(

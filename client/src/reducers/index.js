@@ -13,7 +13,8 @@ const initialState = {
   error: "",
   token: localStorage.getItem("token"),
   fetchingArticles: false,
-  errorStatusCode: null
+  errorStatusCode: null,
+  signingUp: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,12 +27,14 @@ const reducer = (state = initialState, action) => {
     case SIGNUP_START:
       return {
         ...state,
-        loggingIn: true
+        loggingIn: true,
+        signingUp: true
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         loggingIn: false,
+        signingUp: true,
         token: action.payload
       };
     case FETCH_DATA_START:

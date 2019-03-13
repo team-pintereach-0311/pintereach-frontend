@@ -43,7 +43,11 @@ class UserHome extends React.Component {
 
   render() {
     if (this.props.fetchingArticles) {
-      return <Loader type="TailSpin" color="blue" height={80} width={80} />;
+      return (
+        <div className="loader">
+          <Loader type="TailSpin" color="#005995" height={40} width={40} />
+        </div>
+      );
     }
     return (
       <div className="main">
