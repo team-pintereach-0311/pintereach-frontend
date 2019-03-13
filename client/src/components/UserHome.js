@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { PlusCircle } from "styled-icons/boxicons-regular/PlusCircle";
 import { deleteArticle, getData } from "../actions";
 import ArticleFeed from "./ArticleFeed";
-import NavBar from "./NavBar";
+
 import UserCategories from "./UserCategories";
 import UserPin from "./UserPin";
 import UserProfile from "./UserProfile";
@@ -49,10 +49,6 @@ class UserHome extends React.Component {
 
     return (
       <div className="main">
-        <div className="nav">
-          <NavBar />
-        </div>
-
         {/* <Route exact path="/categories" component={UserCategories} /> */}
 
         <Route
@@ -60,7 +56,7 @@ class UserHome extends React.Component {
           path="/home"
           render={props => (
             <div className="home">
-              <Link to="/pin">
+              <Link to="/add-study-form">
                 <button>
                   <AddWhite />
                   Add a link

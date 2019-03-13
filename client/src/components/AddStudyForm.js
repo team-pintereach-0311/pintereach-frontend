@@ -47,7 +47,7 @@ class AddStudyForm extends React.Component {
         <h2>Add New Study</h2>
         <form onSubmit={this.addStudy}>
           <input
-            type="text"
+            type="url"
             name="link"
             placeholder="study link"
             onChange={this.changeHandler}

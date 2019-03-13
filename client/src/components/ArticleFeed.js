@@ -31,10 +31,11 @@ class ArticleFeed extends React.Component {
   // };
 
   deleteArticle = id => {
-    // this.setState({ deletingArticle: id });
+    this.setState({ deletingArticle: id });
     this.props.deleteArticle(id);
   };
   render() {
+    console.log(this.props.articles);
     return (
       <div className="articles">
         {this.props.articles.map(article => (
@@ -42,7 +43,9 @@ class ArticleFeed extends React.Component {
             <a href={article.link} target="_blank">
               {article.link}
             </a>
-            <RemoveCircleOutlineRed onClick={this.deleteArticle(article.id)} />
+            <RemoveCircleOutlineRed
+              onClick={() => this.deleteArticle(article.id)}
+            />
           </div>
         ))}
       </div>

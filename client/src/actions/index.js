@@ -60,13 +60,13 @@ export const DELETE_FAILURE = "DELETE_FAILURE";
 export const deleteArticle = id => dispatch => {
   dispatch({ type: DELETE_START });
   axios
-    .get(`https://testsite.akiradj.com/users/id/article/${id}`, {
+    .delete(`https://testsite.akiradj.com/users/8/articles/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
-    // .then(res => console.log("data", res.data.user))
-    .then(res => {
-      dispatch({ type: DELETE_SUCCESS, payload: res.data.user });
-    })
+    .then(res => console.log("data", res))
+    // .then(res => {
+    //   dispatch({ type: DELETE_SUCCESS, payload: res.data.user });
+    // })
     .catch(err => {
       dispatch({ type: DELETE_FAILURE, payload: err.response });
     });
