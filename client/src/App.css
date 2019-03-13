@@ -11,6 +11,17 @@ h1 {
   font-weight: 600;
 }
 
+.form-entry > h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-entry > h1 > svg {
+  transform: rotate(-20deg);
+  padding-right: 5px;
+}
+
 /* Signup & Login */
 .step-1,
 .step-2 {
@@ -19,14 +30,18 @@ h1 {
   border: 1px solid #58718138;
   border-radius: 2px;
   padding: 0 20px 20px 20px;
-  max-width: 350px;
+  max-width: 360px;
   background-color: #fff;
 }
 
 .account > a {
   text-decoration: none;
   color: #005995;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.account > a:active {
+  color: #157cc0;
 }
 
 .account {

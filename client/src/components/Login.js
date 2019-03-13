@@ -4,6 +4,14 @@ import "../styles/Login.css";
 import { connect } from "react-redux";
 import { login } from "../actions";
 import Loader from "react-loader-spinner";
+import styled from "styled-components";
+import { Pin } from "styled-icons/boxicons-solid/Pin";
+
+const PinRed = styled(Pin)`
+  color: red;
+  height: 40px;
+  width: 40px;
+`;
 
 class Login extends React.Component {
   state = {
@@ -35,7 +43,10 @@ class Login extends React.Component {
       <>
         <div className="step-2">
           <section className="form-entry">
-            <h1>Pintereach</h1>
+            <h1>
+              <PinRed />
+              Pintereach
+            </h1>
             <form onSubmit={this.login}>
               <input
                 type="text"

@@ -4,6 +4,14 @@ import "../styles/Signup.css";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import { signup } from "../actions";
+import styled from "styled-components";
+import { Pin } from "styled-icons/boxicons-solid/Pin";
+
+const PinRed = styled(Pin)`
+  color: red;
+  height: 40px;
+  width: 40px;
+`;
 
 class Signup extends React.Component {
   state = {
@@ -35,7 +43,10 @@ class Signup extends React.Component {
       <>
         <div className="step-1">
           <section className="form-entry">
-            <h1>Pintereach</h1>
+            <h1>
+              <PinRed />
+              Pintereach
+            </h1>
             <h2>
               Sign up to connect with the world's most efficient researchers
             </h2>
