@@ -1,3 +1,6 @@
+.secondary-container {
+  width: 100%;
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -226,9 +229,46 @@ p {
 }
 .main-content {
   padding: 0 32px;
-  height: 360px;
-  border: 1px solid black;
+  height: 400px;
 }
 .main-content .main-content-container {
   display: flex;
+  width: 100%;
+  padding-top: 3.2rem;
+  justify-content: space-between;
+}
+.main-content .main-content-container .para1 {
+  height: 80%;
+  border-right: 1px solid #0a516d;
+  align-items: center;
+  padding-left: 1rem;
+}
+.main-content .main-content-container .para2 {
+  height: 80%;
+  border-right: 1px solid #0a516d;
+  align-items: center;
+  padding-left: 1rem;
+}
+.main-content .main-content-container .para3 {
+  height: 80%;
+  align-items: center;
+  padding-left: 1rem;
+}
+.main-content .signup-btn {
+  display: flex;
+  align-items: flex-end;
+}
+.organize {
+  padding: 0 32px;
+  height: 350px;
+  border: 1px solid gray;
+}
+.organize .content-container {
+  width: 100%;
+}
+.organize .content-container h2 {
+  border: 1px dashed green;
+}
+.organize .content-container p {
+  border: 1px solid red;
 }
