@@ -1,51 +1,14 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { NavLink, Route, Link } from "react-router-dom";
-import ArticleFeed from "./ArticleFeed";
+import { Route, Link } from "react-router-dom";
 import styled from "styled-components";
-import { Home } from "styled-icons/boxicons-regular/Home";
-import { Search } from "styled-icons/boxicons-regular/Search";
-import { Categories } from "styled-icons/boxicons-solid/Categories";
-import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
-import { getData, deleteArticle } from "../actions";
-import UserProfile from "./UserProfile";
-import UserCategories from "./UserCategories";
-import UserPin from "./UserPin";
-import { Notification } from "styled-icons/boxicons-regular/Notification";
-import { Pin } from "styled-icons/boxicons-solid/Pin";
+import { PlusCircle } from "styled-icons/boxicons-regular/PlusCircle";
+import { deleteArticle, getData } from "../actions";
+import ArticleFeed from "./ArticleFeed";
 
-const UserBlack = styled(UserDetail)`
-  color: darkgray;
-  height: 30px;
-  width: 30px;
-`;
-
-const SearchBlack = styled(Search)`
-  color: darkgray;
-  height: 30px;
-  width: 30px;
-`;
-
-const HomeBlack = styled(Home)`
-  color: darkgray;
-  height: 30px;
-  width: 30px;
-`;
-
-const CategoriesBlack = styled(Categories)`
-  color: darkgray;
-  height: 30px;
-  width: 30px;
-`;
-const NotificationBlack = styled(Notification)`
-  color: darkgray;
-  height: 30px;
-  width: 30px;
-`;
-
-const PinRed = styled(Pin)`
-  color: red;
+const AddWhite = styled(PlusCircle)`
+  color: white;
   height: 25px;
   width: 25px;
 `;
@@ -59,7 +22,7 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getData();
+    this.props.getData(this.props.id);
     // setTimeout(() => this.setState({ showMessage: false }), 2000);
   }
 
@@ -82,44 +45,15 @@ class UserHome extends React.Component {
 
     return (
       <div className="main">
-        <div className="navbar">
-          <ul>
-            <li>
-              <NavLink exact to="/home" activeClassName="active">
-                <HomeBlack /> Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/categories" activeClassName="active">
-                <CategoriesBlack /> Categories
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/notifications" activeClassName="active">
-                <NotificationBlack /> Notifications
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/search" activeClassName="active">
-                <SearchBlack /> Search
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile" activeClassName="active">
-                <UserBlack /> Profile
-              </NavLink>
-            </li>
-          </ul>
-        </div>
         <Route
           exact
           path="/home"
           render={props => (
             <div className="home">
-              <Link to="/pin">
+              <Link to="/add-study-form">
                 <button>
-                  <PinRed />
-                  Pin a link
+                  <AddWhite />
+                  Add a link
                 </button>
               </Link>
               <ArticleFeed
@@ -130,9 +64,6 @@ class UserHome extends React.Component {
             </div>
           )}
         />
-        <Route exact path="/pin" component={UserPin} />
-        <Route exact path="/categories" component={UserCategories} />
-        <Route exact path="/profile" component={UserProfile} />
       </div>
     );
   }
@@ -142,12 +73,14 @@ const mapStateToProps = ({
   articles,
   fetchingArticles,
   message,
-  deletingArticle
+  deletingArticle,
+  id
 }) => ({
   articles,
   fetchingArticles,
   message,
-  deletingArticle
+  deletingArticle,
+  id
 });
 
 export default connect(

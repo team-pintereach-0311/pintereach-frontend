@@ -102,37 +102,28 @@ h2 {
 
 .navbar {
   margin: 0 auto;
-  max-width: 1000px;
+  display: flex;
 }
 
 .navbar {
   font-weight: 700;
   height: 50px;
-  background-color: rgba(48, 100, 160, 0.692);
+  background-color: rgba(5, 51, 104, 0.692);
 }
 
-.navbar > ul {
-  display: flex;
-}
-
-.navbar > ul > li {
-  margin-top: 10px;
-}
-
-.navbar > ul > li > a {
+.navbar > a {
   text-decoration: none;
   color: #000;
   padding: 10px;
+  width: 140px;
 }
 
-.navbar > ul > li .active {
-  background-color: rgba(0, 128, 0, 0.329);
-  border-radius: 20px;
+.navbar > .activeNavBtn {
+  background-color: purple;
 }
 
-.navbar > ul > li:hover {
+.navbar > a:hover {
   background-color: rgba(0, 128, 0, 0.329);
-  border-radius: 20px;
 }
 
 footer {
@@ -168,8 +159,15 @@ footer {
 .home > a > button {
   width: 150px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home > a {
+  text-decoration: none;
 }
 
 .home > a > button > svg {
-  transform: rotate(-20deg);
+  padding-right: 8px;
 }

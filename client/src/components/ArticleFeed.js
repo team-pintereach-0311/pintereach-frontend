@@ -30,19 +30,20 @@ class ArticleFeed extends React.Component {
   //     });
   // };
 
-  deleteArticle = id => {
-    // this.setState({ deletingArticle: id });
-    this.props.deleteArticle(id);
+  deleteArticle = (id, user_id) => {
+    this.setState({ deletingArticle: id });
+    this.props.deleteArticle(id, user_id);
   };
   render() {
+    console.log(this.props.articles);
     return (
       <div className="articles">
         {this.props.articles.map(article => (
           <div className="article-card" key={article.id}>
-            <a href={article.link} target="_blank">
-              {article.link}
-            </a>
-            <RemoveCircleOutlineRed onClick={this.deleteArticle(article.id)} />
+            <a href={article.link}>{article.link}</a>
+            <RemoveCircleOutlineRed
+              onClick={() => this.deleteArticle(article.id, article.user_id)}
+            />
           </div>
         ))}
       </div>
