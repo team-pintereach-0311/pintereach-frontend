@@ -51,7 +51,7 @@ class UserHome extends React.Component {
     return (
       <div className="main">
         <div className="feed">
-          <h2>Board Feed - worldwide</h2>
+          <h2>Board Feed</h2>
 
           <Route
             exact
@@ -70,12 +70,20 @@ class UserHome extends React.Component {
             <div className="home">
               <div className="title-block">
                 <h2>Your Boards</h2>
-                <Link to="/add-study-form">
-                  <button>
-                    <AddWhite />
-                    Add a Board
-                  </button>
-                </Link>
+                <div className="btns">
+                  <Link to="/add-board">
+                    <button>
+                      <AddWhite />
+                      Add Board
+                    </button>
+                  </Link>
+                  <Link to="/add-pin">
+                    <button>
+                      <AddWhite />
+                      Add Pin
+                    </button>
+                  </Link>
+                </div>
               </div>
               <ArticleFeed
                 {...props}

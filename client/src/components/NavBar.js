@@ -43,8 +43,8 @@ const HomeBlack = styled(Home)`
 
 const CategoriesBlack = styled(Categories)`
   color: black;
-  height: 15px;
-  width: 15px;
+  height: 30px;
+  width: 30px;
 `;
 const NotificationBlack = styled(Notifications)`
   color: black;
@@ -62,9 +62,13 @@ const NavBar = () => {
       <NavLink exact to="/home" activeClassName="activeNavBtn">
         <HomeBlack />
       </NavLink>
-      <NavLink exact to="/add-study-form" activeClassName="activeNavBtn">
-        <PinBlack />
+
+      <NavLink exact to="/add-board" activeClassName="activeNavBtn">
         <CategoriesBlack />
+      </NavLink>
+
+      <NavLink exact to="/add-pin" activeClassName="activeNavBtn">
+        <PinBlack />
       </NavLink>
 
       <NavLink to="/profile" activeClassName="activeNavBtn">

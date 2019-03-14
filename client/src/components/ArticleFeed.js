@@ -28,7 +28,10 @@ class ArticleFeed extends React.Component {
       <div className="articles">
         {this.props.articles.map(article => (
           <div className="article-card" key={article.id}>
-            <h3>{article.title}</h3>
+            <div className="title">
+              <h3>{article.title}</h3>
+              <p>@{article.postedBy}</p>
+            </div>
             <a
               href={article.link}
               target="_blank"
@@ -37,7 +40,7 @@ class ArticleFeed extends React.Component {
             >
               {article.link}
             </a>
-            <p>@{article.postedBy}</p>
+
             <RemoveCircleOutlineRed
               onClick={() => this.deleteArticle(article.id, article.user_id)}
             />

@@ -48,11 +48,12 @@ class AddStudyForm extends React.Component {
     e.preventDefault();
     console.log("FORM STATE:", this.state.study);
     this.props.addStudy(this.state.study);
-    // .then(() => this.props.history.push("/home"));
+    this.props.history.push("/home");
     this.setState({
       study: {
         link: "",
-        id: ""
+        id: "",
+        pinTitle: ""
       }
     });
   };
@@ -61,39 +62,45 @@ class AddStudyForm extends React.Component {
     return (
       <div className="main">
         <div className="add-study-form">
-          <h2>
-            Create a Board
-            <CategoriesBlack />
-          </h2>
-          <form>
-            <input
-              type="test"
-              name="category"
-              placeholder="category"
-              onChange={this.changeHandler}
-              value={this.state.study.category}
-              required
-            />
-            <div className="radios">
-              <input type="radio" name="status" value="private" /> Private (only
-              visible to you)
-              <input type="radio" name="status" value="public" /> Public
-              (visible to everyone)
-            </div>
-          </form>
-          <h2>
-            <PinRed /> Add Pins to your Board
-          </h2>
           <form onSubmit={this.addStudy}>
+            <h2>
+              <PinRed /> Add Pins to your Board
+            </h2>
+
+            <div className="board-name">
+              <label>Board Name</label>
+              <select name="cars">
+                <option value="volvo">PHYSICS 201</option>
+                <option value="saab">Politics</option>
+                <option value="fiat">Mathematics</option>
+                <option value="audi">Neuroscience</option>
+              </select>
+            </div>
+
             <input
-              type="url"
-              name="link"
-              placeholder="pin link"
+              type="text"
+              name="pinTitle"
+              placeholder="Title"
               onChange={this.changeHandler}
               value={this.state.study.link}
               required
             />
-
+            <input
+              type="url"
+              name="link"
+              placeholder="Link"
+              onChange={this.changeHandler}
+              value={this.state.study.link}
+              required
+            />
+            <input
+              type="text"
+              name="pinTitle"
+              placeholder="Category"
+              onChange={this.changeHandler}
+              value={this.state.study.link}
+              required
+            />
             <button>
               {this.props.addingStudy ? (
                 <Loader type="TailSpin" color="white" height={18} width={18} />

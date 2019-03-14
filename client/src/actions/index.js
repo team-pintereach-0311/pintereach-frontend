@@ -64,9 +64,9 @@ export const deleteArticle = (id, user_id) => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => console.log("data", res))
-    // .then(res => {
-    //   dispatch({ type: DELETE_SUCCESS, payload: res.data.user });
-    // })
+    .then(res => {
+      dispatch({ type: DELETE_SUCCESS, payload: res.data.user });
+    })
     .catch(err => {
       dispatch({ type: DELETE_FAILURE, payload: err.response });
     });

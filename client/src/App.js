@@ -21,8 +21,8 @@ export default function App() {
           <Route exact path="/" component={Signup} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/home" component={UserHome} />
-          <PrivateRoute exact path="/add-study-form" component={AddStudyForm} />
-          <PrivateRoute exact path="/boards" component={Boards} />
+          <PrivateRoute exact path="/add-pin" component={AddStudyForm} />
+          <PrivateRoute exact path="/add-board" component={Boards} />
           <PrivateRoute exact path="/profile" component={UserProfile} />
         </div>
       </div>
