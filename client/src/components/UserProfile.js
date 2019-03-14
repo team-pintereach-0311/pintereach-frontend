@@ -12,8 +12,12 @@ class UserProfile extends React.Component {
 
   render() {
     return (
-      <>
-        <p>hello from UserProfile</p>
+      <div className="profile">
+        <h2>Profile</h2>
+        <form>
+          <input type="file" name="fileToUpload" id="fileToUpload" />
+          <input type="submit" value="Upload Image" name="submit" />
+        </form>
         <button onClick={this.logout}>
           {this.props.loggingOut ? (
             <Loader type="TailSpin" color="white" height={18} width={18} />
@@ -21,7 +25,7 @@ class UserProfile extends React.Component {
             "Log out"
           )}
         </button>
-      </>
+      </div>
     );
   }
 }

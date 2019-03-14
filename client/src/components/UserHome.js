@@ -50,20 +50,37 @@ class UserHome extends React.Component {
           path="/home"
           render={props => (
             <div className="home">
-              <Link to="/add-study-form">
-                <button>
-                  <AddWhite />
-                  Add a link
-                </button>
-              </Link>
+              <h2>Your Pins</h2>
               <ArticleFeed
                 {...props}
                 articles={this.props.articles}
                 deleteArticle={this.props.deleteArticle}
               />
+              <Link to="/add-study-form">
+                <button>
+                  <AddWhite />
+                  Add a Pin
+                </button>
+              </Link>
             </div>
           )}
         />
+        <div className="feed">
+          <h2>Pin Feed</h2>
+          <Route
+            exact
+            path="/home"
+            render={props => (
+              <div className="home">
+                <ArticleFeed
+                  {...props}
+                  articles={this.props.articles}
+                  deleteArticle={this.props.deleteArticle}
+                />
+              </div>
+            )}
+          />
+        </div>
       </div>
     );
   }
