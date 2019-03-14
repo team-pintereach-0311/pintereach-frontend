@@ -43,8 +43,8 @@ const HomeBlack = styled(Home)`
 
 const CategoriesBlack = styled(Categories)`
   color: black;
-  height: 30px;
-  width: 30px;
+  height: 15px;
+  width: 15px;
 `;
 const NotificationBlack = styled(Notifications)`
   color: black;
@@ -55,14 +55,15 @@ const NotificationBlack = styled(Notifications)`
 const NavBar = () => {
   return (
     <div className="navbar">
+      <h1>
+        <PinRed />
+        Pintereach
+      </h1>
       <NavLink exact to="/home" activeClassName="activeNavBtn">
         <HomeBlack />
       </NavLink>
       <NavLink exact to="/add-study-form" activeClassName="activeNavBtn">
         <PinBlack />
-      </NavLink>
-
-      <NavLink to="/boards" activeClassName="activeNavBtn">
         <CategoriesBlack />
       </NavLink>
 

@@ -1,7 +1,7 @@
 html {
   font-family: "Roboto", sans-serif;
   height: 100%;
-  background-color: #fafafa;
+  background-color: #f6fbff;
 }
 
 h1 {
@@ -94,6 +94,10 @@ button:active {
   background-color: #157cc0;
 }
 
+button:hover {
+  background-color: #157cc0;
+}
+
 h2 {
   font-size: 1.05rem;
   padding-bottom: 20px;
@@ -102,7 +106,7 @@ h2 {
 
 .nav {
   height: 55px;
-  background-color: rgb(240, 238, 238);
+  background-color: #fff;
   border-bottom: 1.5px solid #bfcad0;
   position: fixed;
   width: 100%;
@@ -126,7 +130,7 @@ h2 {
   text-decoration: none;
   color: #000;
   padding: 5px;
-  border-radius: 50%;
+  border-radius: 25%;
   opacity: 0.7;
   margin: 0 30px;
 }
@@ -149,7 +153,7 @@ footer {
 .loader {
   display: flex;
   justify-content: center;
-  margin-top: 50%;
+  margin-top: 30%;
 }
 
 /* articles */
@@ -165,13 +169,23 @@ footer {
   padding: 5px;
   margin: 5px auto;
   border-radius: 3px;
+  cursor: pointer;
 }
+.articles > .article-card > a {
+  color: #000000;
+}
+
+.articles > .article-card:hover {
+  background-color: #58705809;
+  transform: scale(1.02);
+}
+
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.home > a > button {
+.home > .title-block > a > button {
   width: 150px;
   height: 40px;
   display: flex;
@@ -179,11 +193,11 @@ footer {
   justify-content: center;
 }
 
-.home > a {
+.home > .title-block > a {
   text-decoration: none;
 }
 
-.home > a > button > svg {
+.home > .title-block > a > button > svg {
   padding-right: 8px;
 }
 
@@ -202,27 +216,27 @@ footer {
 }
 .home {
   width: 380px;
-  background-color: rgb(240, 238, 238);
+  background-color: #fff;
   border: 1px solid #00599546;
-  border-radius: 2px;
 }
 
 .feed {
   width: 580px;
-  background-color: rgb(240, 238, 238);
+  background-color: #fff;
+  border: 1px solid #00599546;
 }
 
-.main > h2 {
+.home > .title-block > h2 {
   font-family: "Advent Pro", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding: 20px 0;
   font-weight: 600;
-  margin-top: 20px;
 }
 .home > h2 {
   font-size: 2rem;
   margin-top: 20px;
   font-family: "Advent Pro", sans-serif;
+  padding-bottom: 5px;
 }
 .main {
   display: flex;
@@ -242,9 +256,13 @@ footer {
   text-align: center;
   padding-top: 20px;
 }
+.main > .add-study-form > h2:last-of-type {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
 
 .add-study-form {
-  background-color: rgb(240, 238, 238);
+  background-color: #fff;
   width: 580px;
 }
 
@@ -283,15 +301,82 @@ footer {
 
 .category {
   width: 380px;
-  background-color: rgb(240, 238, 238);
+  background-color: #fff;
 }
 
 .profile {
-  background-color: rgb(240, 238, 238);
+  background-color: #fff;
   padding: 20px;
 }
 
 .profile button {
   width: 150px;
+  margin-top: 10px;
+}
+
+.boards {
+  background-color: #fff;
+}
+
+/* rgb(240, 238, 238); #fafafa*/
+
+.main > .category > h2 {
+  font-family: "Advent Pro", sans-serif;
+  font-size: 2rem;
   margin-top: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.boards > h2 {
+  font-family: "Advent Pro", sans-serif;
+  font-size: 2rem;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.boards > p {
+  text-align: center;
+}
+
+.profile > .profile-body > h2 {
+  font-family: "Advent Pro", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.profile > .profile-body > p {
+  text-align: left;
+  padding: 5px;
+}
+
+.profile > .profile-body {
+  border: 1px solid #00599546;
+  width: 60%;
+  padding: 20px;
+}
+
+.profile > .profile-body > p > strong {
+  font-weight: 600;
+}
+
+.profile > .profile-body > p span {
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.articles > .article-card > h3 {
+  font-size: 1.5rem;
+}
+
+.title-block {
+  display: flex;
+  width: 90%;
+  margin: 0 5px;
+  justify-content: space-around;
+}
+
+.profile {
+  text-align: center;
 }

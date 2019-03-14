@@ -9,7 +9,6 @@ import AddStudyForm from "./components/AddStudyForm";
 import NavBar from "./components/NavBar";
 import Boards from "./components/Boards";
 import UserProfile from "./components/UserProfile";
-import UserNotifications from "./components/UserNotifications";
 
 export default function App() {
   return (
@@ -25,11 +24,6 @@ export default function App() {
           <PrivateRoute exact path="/add-study-form" component={AddStudyForm} />
           <PrivateRoute exact path="/boards" component={Boards} />
           <PrivateRoute exact path="/profile" component={UserProfile} />
-          <PrivateRoute
-            exact
-            path="/notifications"
-            component={UserNotifications}
-          />
         </div>
       </div>
     </Router>

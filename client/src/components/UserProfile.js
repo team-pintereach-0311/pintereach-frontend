@@ -13,11 +13,6 @@ class UserProfile extends React.Component {
   render() {
     return (
       <div className="profile">
-        <h2>Profile</h2>
-        <form>
-          <input type="file" name="fileToUpload" id="fileToUpload" />
-          <input type="submit" value="Upload Image" name="submit" />
-        </form>
         <button onClick={this.logout}>
           {this.props.loggingOut ? (
             <Loader type="TailSpin" color="white" height={18} width={18} />
@@ -30,8 +25,9 @@ class UserProfile extends React.Component {
   }
 }
 
-const mapStateToProps = ({ loggingOut }) => ({
-  loggingOut
+const mapStateToProps = ({ loggingOut, articles }) => ({
+  loggingOut,
+  articles
 });
 
 export default connect(

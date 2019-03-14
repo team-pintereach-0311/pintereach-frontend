@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { PlusCircle } from "styled-icons/boxicons-regular/PlusCircle";
 import { deleteArticle, getData } from "../actions";
 import ArticleFeed from "./ArticleFeed";
+import BoardFeed from "./BoardFeed";
 
 const AddWhite = styled(PlusCircle)`
   color: white;
@@ -45,42 +46,41 @@ class UserHome extends React.Component {
 
     return (
       <div className="main">
+        <div className="feed">
+          <h2>Board Feed - worldwide</h2>
+
+          <Route
+            exact
+            path="/home"
+            render={props => (
+              <div className="home2">
+                <BoardFeed {...props} articles={this.props.articles} />
+              </div>
+            )}
+          />
+        </div>
         <Route
           exact
           path="/home"
           render={props => (
             <div className="home">
-              <h2>Your Pins</h2>
+              <div className="title-block">
+                <h2>Your Boards</h2>
+                <Link to="/add-study-form">
+                  <button>
+                    <AddWhite />
+                    Add a Board
+                  </button>
+                </Link>
+              </div>
               <ArticleFeed
                 {...props}
                 articles={this.props.articles}
                 deleteArticle={this.props.deleteArticle}
               />
-              <Link to="/add-study-form">
-                <button>
-                  <AddWhite />
-                  Add a Pin
-                </button>
-              </Link>
             </div>
           )}
         />
-        <div className="feed">
-          <h2>Pin Feed</h2>
-          <Route
-            exact
-            path="/home"
-            render={props => (
-              <div className="home">
-                <ArticleFeed
-                  {...props}
-                  articles={this.props.articles}
-                  deleteArticle={this.props.deleteArticle}
-                />
-              </div>
-            )}
-          />
-        </div>
       </div>
     );
   }

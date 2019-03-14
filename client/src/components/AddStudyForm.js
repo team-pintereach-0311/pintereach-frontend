@@ -44,11 +44,25 @@ class AddStudyForm extends React.Component {
   render() {
     return (
       <div className="main">
-        <div className="category">
-          <h2>Create a Community</h2>
-        </div>
         <div className="add-study-form">
-          <h2>Add New Pin</h2>
+          <h2>Create a Board</h2>
+          <form>
+            <input
+              type="test"
+              name="category"
+              placeholder="category"
+              onChange={this.changeHandler}
+              value={this.state.study.category}
+              required
+            />
+            <div className="radios">
+              <input type="radio" name="status" value="private" /> Private (only
+              visible to you)
+              <input type="radio" name="status" value="public" /> Public
+              (visible to everyone)
+            </div>
+          </form>
+          <h2>Add Pins to your Board</h2>
           <form onSubmit={this.addStudy}>
             <input
               type="url"
@@ -58,19 +72,7 @@ class AddStudyForm extends React.Component {
               value={this.state.study.link}
               required
             />
-            <input
-              type="test"
-              name="category"
-              placeholder="category (optional)"
-              onChange={this.changeHandler}
-              value={this.state.study.category}
-            />
-            <div className="radios">
-              <input type="radio" name="status" value="private" checked />{" "}
-              Private (only visible to you)
-              <input type="radio" name="status" value="public" /> Public
-              (visible to everyone)
-            </div>
+
             <button>
               {this.props.addingStudy ? (
                 <Loader type="TailSpin" color="white" height={18} width={18} />
