@@ -2,8 +2,26 @@ import React from "react";
 
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
+import styled from "styled-components";
+import { Categories } from "styled-icons/boxicons-solid/Categories";
+import { Pin } from "styled-icons/boxicons-solid/Pin";
 
 import { addStudy } from "../actions";
+
+const PinRed = styled(Pin)`
+  color: red;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-20deg);
+`;
+
+const CategoriesBlack = styled(Categories)`
+  color: black;
+  height: 30px;
+  width: 30px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+`;
 
 class AddStudyForm extends React.Component {
   state = {
@@ -30,9 +48,7 @@ class AddStudyForm extends React.Component {
     e.preventDefault();
     console.log("FORM STATE:", this.state.study);
     this.props.addStudy(this.state.study);
-    // .then(() => {
-    //   this.props.history.push("/home");
-    // });
+    // .then(() => this.props.history.push("/home"));
     this.setState({
       study: {
         link: "",
@@ -45,7 +61,10 @@ class AddStudyForm extends React.Component {
     return (
       <div className="main">
         <div className="add-study-form">
-          <h2>Create a Board</h2>
+          <h2>
+            Create a Board
+            <CategoriesBlack />
+          </h2>
           <form>
             <input
               type="test"
@@ -62,7 +81,9 @@ class AddStudyForm extends React.Component {
               (visible to everyone)
             </div>
           </form>
-          <h2>Add Pins to your Board</h2>
+          <h2>
+            <PinRed /> Add Pins to your Board
+          </h2>
           <form onSubmit={this.addStudy}>
             <input
               type="url"

@@ -27,6 +27,10 @@ class UserHome extends React.Component {
     // setTimeout(() => this.setState({ showMessage: false }), 2000);
   }
 
+  // componentDidUpdate() {
+  //   this.props.getData(this.props.id);
+  // }
+
   render() {
     if (this.props.fetchingArticles) {
       return (

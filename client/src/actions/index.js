@@ -82,7 +82,9 @@ export const addStudy = study => dispatch => {
     .post("https://testsite.akiradj.com/users/articles", study, {
       headers: { Authorization: localStorage.getItem("token") }
     })
-    .then(res => console.log("ADD RES:", res))
+    .then(res => {
+      dispatch({ type: ADD_STUDY_SUCCESS, payload: res.data });
+    })
     .catch(err => {
       console.log(err);
     });

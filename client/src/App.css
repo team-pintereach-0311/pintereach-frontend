@@ -264,6 +264,7 @@ footer {
 .add-study-form {
   background-color: #fff;
   width: 580px;
+  border: 1px solid #00599546;
 }
 
 .add-study-form > form > button {
@@ -328,6 +329,14 @@ footer {
   padding-top: 20px;
 }
 
+.message > h2 {
+  font-family: "Advent Pro", sans-serif;
+  font-size: 2rem;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
 .boards > h2 {
   font-family: "Advent Pro", sans-serif;
   font-size: 2rem;
@@ -368,6 +377,10 @@ footer {
 
 .articles > .article-card > h3 {
   font-size: 1.5rem;
+}
+.profile {
+  border: 1px solid #00599546;
+  width: 300px;
 }
 
 .title-block {
