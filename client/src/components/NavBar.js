@@ -7,31 +7,47 @@ import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
 import { Notifications } from "styled-icons/material/Notifications";
 import styled from "styled-components";
 
+import { Pin } from "styled-icons/boxicons-solid/Pin";
+
+const PinRed = styled(Pin)`
+  color: red;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-20deg);
+`;
+
+const PinBlack = styled(Pin)`
+  color: black;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-20deg);
+`;
+
 const UserBlack = styled(UserDetail)`
-  color: darkgray;
+  color: black;
   height: 30px;
   width: 30px;
 `;
 
 const SearchBlack = styled(Search)`
-  color: darkgray;
+  color: black;
   height: 30px;
   width: 30px;
 `;
 
 const HomeBlack = styled(Home)`
-  color: darkgray;
+  color: black;
   height: 30px;
   width: 30px;
 `;
 
 const CategoriesBlack = styled(Categories)`
-  color: darkgray;
+  color: black;
   height: 30px;
   width: 30px;
 `;
 const NotificationBlack = styled(Notifications)`
-  color: darkgray;
+  color: black;
   height: 30px;
   width: 30px;
 `;
@@ -39,20 +55,24 @@ const NotificationBlack = styled(Notifications)`
 const NavBar = () => {
   return (
     <div className="navbar">
+      <h1>
+        <PinRed />
+        Pintereach
+      </h1>
       <NavLink exact to="/home" activeClassName="activeNavBtn">
         <HomeBlack />
       </NavLink>
 
-      <NavLink to="/boards" activeClassName="activeNavBtn">
+      <NavLink exact to="/add-board" activeClassName="activeNavBtn">
         <CategoriesBlack />
       </NavLink>
 
-      <NavLink to="/notifications" activeClassName="activeNavBtn">
-        <NotificationBlack />
+      <NavLink exact to="/add-pin" activeClassName="activeNavBtn">
+        <PinBlack />
       </NavLink>
 
       <NavLink to="/profile" activeClassName="activeNavBtn">
-        <UserBlack /> @example
+        <UserBlack />
       </NavLink>
     </div>
   );

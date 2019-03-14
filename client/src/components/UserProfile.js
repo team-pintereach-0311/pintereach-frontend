@@ -12,8 +12,7 @@ class UserProfile extends React.Component {
 
   render() {
     return (
-      <>
-        <p>hello from UserProfile</p>
+      <div className="profile">
         <button onClick={this.logout}>
           {this.props.loggingOut ? (
             <Loader type="TailSpin" color="white" height={18} width={18} />
@@ -21,13 +20,14 @@ class UserProfile extends React.Component {
             "Log out"
           )}
         </button>
-      </>
+      </div>
     );
   }
 }
 
-const mapStateToProps = ({ loggingOut }) => ({
-  loggingOut
+const mapStateToProps = ({ loggingOut, articles }) => ({
+  loggingOut,
+  articles
 });
 
 export default connect(

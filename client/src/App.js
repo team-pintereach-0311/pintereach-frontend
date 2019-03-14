@@ -9,7 +9,6 @@ import AddStudyForm from "./components/AddStudyForm";
 import NavBar from "./components/NavBar";
 import Boards from "./components/Boards";
 import UserProfile from "./components/UserProfile";
-import UserNotifications from "./components/UserNotifications";
 
 export default function App() {
   return (
@@ -18,17 +17,14 @@ export default function App() {
         <div className="nav">
           <NavBar />
         </div>
-        <Route exact path="/" component={Signup} />
-        <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/home" component={UserHome} />
-        <PrivateRoute exact path="/add-study-form" component={AddStudyForm} />
-        <PrivateRoute exact path="/boards" component={Boards} />
-        <PrivateRoute exact path="/profile" component={UserProfile} />
-        <PrivateRoute
-          exact
-          path="/notifications"
-          component={UserNotifications}
-        />
+        <div className="body">
+          <Route exact path="/" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/home" component={UserHome} />
+          <PrivateRoute exact path="/add-pin" component={AddStudyForm} />
+          <PrivateRoute exact path="/add-board" component={Boards} />
+          <PrivateRoute exact path="/profile" component={UserProfile} />
+        </div>
       </div>
     </Router>
   );

@@ -89,6 +89,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         addingStudy: true
       };
+    case ADD_STUDY_SUCCESS:
+      return {
+        ...state,
+        addingStudy: false
+      };
     case LOGOUT_START:
       return {
         ...state,

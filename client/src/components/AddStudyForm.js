@@ -2,8 +2,26 @@ import React from "react";
 
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
+import styled from "styled-components";
+import { Categories } from "styled-icons/boxicons-solid/Categories";
+import { Pin } from "styled-icons/boxicons-solid/Pin";
 
 import { addStudy } from "../actions";
+
+const PinRed = styled(Pin)`
+  color: red;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-20deg);
+`;
+
+const CategoriesBlack = styled(Categories)`
+  color: black;
+  height: 30px;
+  width: 30px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+`;
 
 class AddStudyForm extends React.Component {
   state = {
@@ -30,38 +48,68 @@ class AddStudyForm extends React.Component {
     e.preventDefault();
     console.log("FORM STATE:", this.state.study);
     this.props.addStudy(this.state.study);
-    // .then(() => {
-    //   this.props.history.push("/home");
-    // });
+    this.props.history.push("/home");
     this.setState({
       study: {
         link: "",
-        id: ""
+        id: "",
+        pinTitle: ""
       }
     });
   };
 
   render() {
     return (
-      <div className="add-study-form">
-        <h2>Add New Study</h2>
-        <form onSubmit={this.addStudy}>
-          <input
-            type="url"
-            name="link"
-            placeholder="study link"
-            onChange={this.changeHandler}
-            value={this.state.study.link}
-          />
+      <div className="main">
+        <div className="add-study-form">
+          <form onSubmit={this.addStudy}>
+            <h2>
+              <PinRed /> Add Pins to your Board
+            </h2>
 
-          <button>
-            {this.props.addingStudy ? (
-              <Loader type="TailSpin" color="white" height={18} width={18} />
-            ) : (
-              "Add study"
-            )}
-          </button>
-        </form>
+            <div className="board-name">
+              <label>Board Name</label>
+              <select name="cars">
+                <option value="volvo">PHYSICS 201</option>
+                <option value="saab">Politics</option>
+                <option value="fiat">Mathematics</option>
+                <option value="audi">Neuroscience</option>
+              </select>
+            </div>
+
+            <input
+              type="text"
+              name="pinTitle"
+              placeholder="Title"
+              onChange={this.changeHandler}
+              value={this.state.study.link}
+              required
+            />
+            <input
+              type="url"
+              name="link"
+              placeholder="Link"
+              onChange={this.changeHandler}
+              value={this.state.study.link}
+              required
+            />
+            <input
+              type="text"
+              name="pinTitle"
+              placeholder="Category"
+              onChange={this.changeHandler}
+              value={this.state.study.link}
+              required
+            />
+            <button>
+              {this.props.addingStudy ? (
+                <Loader type="TailSpin" color="white" height={18} width={18} />
+              ) : (
+                "Add Pin"
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

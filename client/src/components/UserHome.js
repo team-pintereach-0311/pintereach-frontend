@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { PlusCircle } from "styled-icons/boxicons-regular/PlusCircle";
 import { deleteArticle, getData } from "../actions";
 import ArticleFeed from "./ArticleFeed";
+import BoardFeed from "./BoardFeed";
 
 const AddWhite = styled(PlusCircle)`
   color: white;
@@ -26,6 +27,10 @@ class UserHome extends React.Component {
     // setTimeout(() => this.setState({ showMessage: false }), 2000);
   }
 
+  // componentDidUpdate() {
+  //   this.props.getData(this.props.id);
+  // }
+
   render() {
     if (this.props.fetchingArticles) {
       return (
@@ -45,17 +50,41 @@ class UserHome extends React.Component {
 
     return (
       <div className="main">
+        <div className="feed">
+          <h2>Board Feed</h2>
+
+          <Route
+            exact
+            path="/home"
+            render={props => (
+              <div className="home2">
+                <BoardFeed {...props} articles={this.props.articles} />
+              </div>
+            )}
+          />
+        </div>
         <Route
           exact
           path="/home"
           render={props => (
             <div className="home">
-              <Link to="/add-study-form">
-                <button>
-                  <AddWhite />
-                  Add a link
-                </button>
-              </Link>
+              <div className="title-block">
+                <h2>Your Boards</h2>
+                <div className="btns">
+                  <Link to="/add-board">
+                    <button>
+                      <AddWhite />
+                      Add Board
+                    </button>
+                  </Link>
+                  <Link to="/add-pin">
+                    <button>
+                      <AddWhite />
+                      Add Pin
+                    </button>
+                  </Link>
+                </div>
+              </div>
               <ArticleFeed
                 {...props}
                 articles={this.props.articles}

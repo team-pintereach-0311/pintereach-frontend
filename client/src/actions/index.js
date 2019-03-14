@@ -64,9 +64,9 @@ export const deleteArticle = (id, user_id) => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => console.log("data", res))
-    // .then(res => {
-    //   dispatch({ type: DELETE_SUCCESS, payload: res.data.user });
-    // })
+    .then(res => {
+      dispatch({ type: DELETE_SUCCESS, payload: res.data.user });
+    })
     .catch(err => {
       dispatch({ type: DELETE_FAILURE, payload: err.response });
     });
@@ -82,7 +82,9 @@ export const addStudy = study => dispatch => {
     .post("https://testsite.akiradj.com/users/articles", study, {
       headers: { Authorization: localStorage.getItem("token") }
     })
-    .then(res => console.log("ADD RES:", res))
+    .then(res => {
+      dispatch({ type: ADD_STUDY_SUCCESS, payload: res.data });
+    })
     .catch(err => {
       console.log(err);
     });
