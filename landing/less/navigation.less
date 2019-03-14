@@ -1,28 +1,81 @@
-.nav-container {
-    height: 10rem;
-    padding: 0 32px;
+// .nav-container {
+//     height: 10rem;
+//     padding: 0 32px;
 
-    .nav-bar {
-        display: flex;
-        justify-content: flex-end;
-        max-width: 1150px;
-        height: 10rem;
-        align-items: center;
-    }
+//     .nav-bar {
+//         display: flex;
+//         justify-content: flex-end;
+//         max-width: 1150px;
+//         height: 10rem;
+//         align-items: center;
+//     }
 
-    a {
-        font-size: 1.6rem;
-        align-items: center;
-        color: @nav-font;
-        margin: auto 32px auto 0;
-        text-decoration-line: none;
+//     a {
+//         font-size: 1.6rem;
+//         align-items: center;
+//         color: @nav-font;
+//         margin: auto 32px auto 0;
+//         text-decoration-line: none;
 
-        &:hover {
-            color: @nav-hover;
-        }
-    }
+//         &:hover {
+//             color: @nav-hover;
+//         }
+//     }
     
-    nav:last-of-type {
-        margin-right: 0;
+//     nav:last-of-type {
+//         margin-right: 0;
+//     }
+// }
+
+.navbar {
+    height: 10rem;
+    border: 1px solid red;
+    
+    .container-fluid {
+        height: 80%;
+        border: 1px solid blue;
+    }
+
+    .navbar-header {
+        height: 90%;
+        width: 90%;
+        border: 1px solid green;
     }
 }
+
+// .navbar-toggle {
+//     border: none;
+//     // background: transparent;
+    
+//     &:hover {
+//       background: transparent;
+//     }
+  
+//     .icon-bar {
+//       width: 23%;
+//       transition: all 0.2s;
+//     }
+//     .top-bar {
+//       transform: rotate(45deg);
+//       transform-origin: 10% 10%;
+//     }
+//     .middle-bar {
+//       opacity: 0;
+//     }
+//     .bottom-bar {
+//       transform: rotate(-45deg);
+//       transform-origin: 10% 90%;
+//     }
+  
+//     &.collapsed {
+//       .top-bar {
+//         transform: rotate(0);      
+//       }
+//       .middle-bar {
+//         opacity: 1;
+//       }
+//       .bottom-bar {
+//         transform: rotate(0);
+//       }
+//     }
+//   }
