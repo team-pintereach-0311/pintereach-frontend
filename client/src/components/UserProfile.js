@@ -7,6 +7,7 @@ class UserProfile extends React.Component {
   logout = e => {
     e.preventDefault();
     this.props.logout();
+    document.location.reload();
   };
 
   render() {
@@ -25,8 +26,8 @@ class UserProfile extends React.Component {
   }
 }
 
-const mapStateToProps = ({ logginOut }) => ({
-  logginOut
+const mapStateToProps = ({ loggingOut }) => ({
+  loggingOut
 });
 
 export default connect(

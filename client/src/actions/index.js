@@ -95,5 +95,5 @@ export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 export const logout = () => dispatch => {
   dispatch({ type: LOGOUT_START });
   localStorage.clear();
-  dispatch({ type: LOGIN_SUCCESS });
+  dispatch({ type: LOGOUT_SUCCESS });
 };
