@@ -85,7 +85,7 @@ class UserHome extends React.Component {
             render={props => (
               <div className="home">
                 <div className="title-block">
-                  <h2>Your Boards</h2>
+                  <h2>Your Pins</h2>
                   <div className="btns" />
                 </div>
                 <ArticleFeed
