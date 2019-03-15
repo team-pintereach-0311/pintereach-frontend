@@ -461,3 +461,11 @@ p {
     margin: 0 0.5rem;
   }
 }
+.team {
+  display: flex;
+  width: 100%;
+}
+.team .img-container {
+  width: 60%;
+  height: 30%;
+}
