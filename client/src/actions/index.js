@@ -55,7 +55,7 @@ export const FETCH_DATA3_FAILURE = "FETCH_DATA3_FAILURE";
 export const getData3 = () => dispatch => {
   dispatch({ type: FETCH_DATA3_START });
   axios
-    .get("https://testsite.akiradj.com/categories/Social Media/articles", {
+    .get("https://testsite.akiradj.com/categories/Space/articles", {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {

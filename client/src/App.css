@@ -503,6 +503,16 @@ img {
   width: 100px;
 }
 
+.boards {
+  max-width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.boards > .board-card {
+  padding: 10px 20px;
+}
+
 @media (max-width: 1000px) {
   .main {
     display: flex;
