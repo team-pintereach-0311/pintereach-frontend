@@ -35,7 +35,6 @@ class AddStudyForm extends React.Component {
 
   addStudy = e => {
     e.preventDefault();
-    console.log("FORM STATE:", this.state.study);
 
     this.props.addStudy(this.state.study);
     this.props.history.push("/home");

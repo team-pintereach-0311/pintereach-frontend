@@ -23,7 +23,6 @@ export const signup = creds => dispatch => {
       return axios
         .post("https://testsite.akiradj.com/auth/login", creds)
         .then(res => {
-          console.log("logindata", res.data);
           localStorage.setItem("token", res.data.token);
           dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         });
@@ -96,7 +95,6 @@ export const deleteArticle = (id, user_id) => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-      console.log(res.data);
       window.location.reload();
     })
 
@@ -116,7 +114,6 @@ export const addStudy = study => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-      console.log("ADD STUDY RESPONDS ", res.data);
       dispatch({ type: ADD_STUDY_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -135,7 +132,6 @@ export const addBoard = (name, id) => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-      console.log(res.data);
       dispatch({ type: ADD_BOARD_SUCCESS, payload: res.data });
     })
     .catch(err => {
