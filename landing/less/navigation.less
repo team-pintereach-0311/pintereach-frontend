@@ -1,5 +1,5 @@
 .nav-container {
-    height: 10rem;
+    height: 7rem;
     padding: 0 32px;
 
     .nav-bar {
@@ -7,7 +7,7 @@
         justify-content: flex-end;
         max-width: 1150px;
         height: 10rem;
-        align-items: center;
+        align-items: flex-end;
     }
 
     a {
@@ -16,9 +16,13 @@
         color: @nav-font;
         margin: auto 32px auto 0;
         text-decoration-line: none;
+        
+        &:last-of-type {
+            color: @accent-color
+        }
 
         &:hover {
-            color: @nav-hover;
+            color: @tertiary-color;
         }
     }
     
@@ -26,3 +30,73 @@
         margin-right: 0;
     }
 }
+
+// .navbar {
+//     height: 10rem;
+//     border: 1px solid red;
+    
+//     .container-fluid {
+//         height: 80%;
+//         border: 1px solid blue;
+//     }
+
+//     .navbar-header {
+//         height: 80%;
+//         width: 80%;
+//         border: 1px solid green;
+//     }
+
+//     .navbar-toggle {
+//         border: 1px solid orange;
+//         display: flex;
+//         // flex-direction: column;
+//         width: 15%;
+
+//         .icon-bar {
+//             border: 2px solid black;
+//             margin-bottom: .3rem;
+//             width: 20px;
+//         }
+
+//         .middle-bar {
+//             display: none;
+//         }
+//     }
+// }
+
+// .navbar-toggle {
+//     border: none;
+//     // background: transparent;
+    
+//     &:hover {
+//       background: transparent;
+//     }
+  
+//     .icon-bar {
+//       width: 23%;
+//       transition: all 0.2s;
+//     }
+//     .top-bar {
+//       transform: rotate(45deg);
+//       transform-origin: 10% 10%;
+//     }
+//     .middle-bar {
+//       opacity: 0;
+//     }
+//     .bottom-bar {
+//       transform: rotate(-45deg);
+//       transform-origin: 10% 90%;
+//     }
+  
+//     &.collapsed {
+//       .top-bar {
+//         transform: rotate(0);      
+//       }
+//       .middle-bar {
+//         opacity: 1;
+//       }
+//       .bottom-bar {
+//         transform: rotate(0);
+//       }
+//     }
+//   }
