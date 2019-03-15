@@ -208,7 +208,6 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px dashed green;
   }
 }
 .content-container .header-content {
@@ -221,7 +220,6 @@ p {
   .content-container .header-content {
     width: 100%;
     margin-right: 0;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
   }
@@ -294,15 +292,12 @@ p {
 .carousel {
   padding: 0 32px;
   height: 80%;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   padding: 3.2rem 0;
-  background-color: #0a516d;
 }
 .carousel .carousel-inner {
   width: 100%;
-  border: 1px solid violet;
   width: 50%;
   height: 100%;
   justify-content: center;
@@ -349,6 +344,8 @@ p {
 @media (max-width: 500px) {
   .organize .content-container {
     position: relative;
+    border: none;
+    width: 100%;
   }
 }
 .organize .content-container h2 {
@@ -380,6 +377,9 @@ p {
 @media (max-width: 500px) {
   .share .content-container {
     position: relative;
+    border: none;
+    display: flex;
+    width: 100%;
   }
 }
 .share .content-container h2 {
@@ -410,6 +410,8 @@ p {
 @media (max-width: 500px) {
   .cta .content-container {
     position: relative;
+    border: none;
+    width: 100%;
   }
 }
 .cta .content-container h2 {
