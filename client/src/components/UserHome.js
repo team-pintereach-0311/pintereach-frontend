@@ -1,10 +1,10 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { Route, Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import styled from "styled-components";
 import { PlusCircle } from "styled-icons/boxicons-regular/PlusCircle";
-import { deleteArticle, getData } from "../actions";
+import { deleteArticle, getData, getData2, getData3 } from "../actions";
 import ArticleFeed from "./ArticleFeed";
 import BoardFeed from "./BoardFeed";
 
@@ -24,12 +24,11 @@ class UserHome extends React.Component {
 
   componentDidMount() {
     this.props.getData(this.props.id);
+    this.props.getData2(this.props.id);
+    this.props.getData3();
+
     // setTimeout(() => this.setState({ showMessage: false }), 2000);
   }
-
-  // componentDidUpdate() {
-  //   this.props.getData(this.props.id);
-  // }
 
   render() {
     if (this.props.fetchingArticles) {
@@ -58,41 +57,46 @@ class UserHome extends React.Component {
             path="/home"
             render={props => (
               <div className="home2">
-                <BoardFeed {...props} articles={this.props.articles} />
+                <BoardFeed
+                  {...props}
+                  boards={this.props.boards}
+                  articles={this.props.allArticles}
+                />
               </div>
             )}
           />
         </div>
-        <Route
-          exact
-          path="/home"
-          render={props => (
-            <div className="home">
-              <div className="title-block">
-                <h2>Your Boards</h2>
-                <div className="btns">
-                  <Link to="/add-board">
-                    <button>
-                      <AddWhite />
-                      Add Board
-                    </button>
-                  </Link>
-                  <Link to="/add-pin">
-                    <button>
-                      <AddWhite />
-                      Add Pin
-                    </button>
-                  </Link>
+        <div className="side">
+          <Link to="/add-board">
+            <button>
+              <AddWhite />
+              Add Board
+            </button>
+          </Link>
+          <Link to="/add-pin">
+            <button className="last">
+              <AddWhite />
+              Add Pin
+            </button>
+          </Link>
+          <Route
+            exact
+            path="/home"
+            render={props => (
+              <div className="home">
+                <div className="title-block">
+                  <h2>Your Pins</h2>
+                  <div className="btns" />
                 </div>
+                <ArticleFeed
+                  {...props}
+                  articles={this.props.articles}
+                  deleteArticle={this.props.deleteArticle}
+                />
               </div>
-              <ArticleFeed
-                {...props}
-                articles={this.props.articles}
-                deleteArticle={this.props.deleteArticle}
-              />
-            </div>
-          )}
-        />
+            )}
+          />
+        </div>
       </div>
     );
   }
@@ -103,16 +107,20 @@ const mapStateToProps = ({
   fetchingArticles,
   message,
   deletingArticle,
-  id
+  id,
+  boards,
+  allArticles
 }) => ({
   articles,
   fetchingArticles,
   message,
   deletingArticle,
-  id
+  id,
+  boards,
+  allArticles
 });
 
 export default connect(
   mapStateToProps,
-  { getData, deleteArticle }
+  { getData, deleteArticle, getData2, getData3 }
 )(UserHome);

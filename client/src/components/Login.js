@@ -1,17 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../styles/Login.css";
-import { connect } from "react-redux";
-import { login } from "../actions";
 import Loader from "react-loader-spinner";
-
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Pin } from "styled-icons/boxicons-solid/Pin";
+import { login } from "../actions";
+import "../styles/Login.css";
+import { Github } from "styled-icons/boxicons-logos/Github";
 
 const PinRed = styled(Pin)`
   color: red;
   height: 40px;
   width: 40px;
+`;
+
+const GithubLogo = styled(Github)`
+  color: black;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
 `;
 
 class Login extends React.Component {
@@ -33,7 +40,7 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    console.log(this.state.credentials);
+
     this.props
       .login(this.state.credentials)
       .then(() => this.props.history.push("/home"));
@@ -87,6 +94,9 @@ class Login extends React.Component {
           </section>
         </div>
         <footer>
+          <a href="https://github.com/team-pintereach-0311">
+            <GithubLogo />
+          </a>
           <p> &copy; 2019 Pintereach</p>
         </footer>
       </>

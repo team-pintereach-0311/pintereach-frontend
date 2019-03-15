@@ -1,7 +1,5 @@
 import axios from "axios";
 
-import { history } from "../helpers/history";
-
 export const LOGIN_START = "LOGIN_START";
 export const SIGNUP_START = "SIGNUP_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -11,8 +9,8 @@ export const login = creds => dispatch => {
   return axios
     .post("https://testsite.akiradj.com/auth/login", creds)
     .then(res => {
-      console.log(res);
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("id", res.data.id);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     });
 };
@@ -22,14 +20,11 @@ export const signup = creds => dispatch => {
   return axios
     .post("https://testsite.akiradj.com/auth/register", creds)
     .then(res => {
-      console.log(res);
-      // localStorage.setItem("token", res.data.token);
-      dispatch({ type: LOGIN_START });
       return axios
         .post("https://testsite.akiradj.com/auth/login", creds)
         .then(res => {
           localStorage.setItem("token", res.data.token);
-          dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
+          dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         });
     });
 };
@@ -45,11 +40,47 @@ export const getData = id => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-      console.log(res.data);
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_DATA_FAILURE, payload: err.response });
+    });
+};
+
+export const FETCH_DATA3_START = "FETCH_DATA3_START";
+export const FETCH_DATA3_SUCCESS = "FETCH_DATA3_SUCCESS";
+export const FETCH_DATA3_FAILURE = "FETCH_DATA3_FAILURE";
+
+export const getData3 = () => dispatch => {
+  dispatch({ type: FETCH_DATA3_START });
+  axios
+    .get("https://testsite.akiradj.com/categories/Space/articles", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: FETCH_DATA3_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: FETCH_DATA3_FAILURE, payload: err.response });
+    });
+};
+
+export const FETCH_DATA2_START = "FETCH_DATA2_START";
+export const FETCH_DATA2_SUCCESS = "FETCH_DATA2_SUCCESS";
+export const FETCH_DATA2_FAILURE = "FETCH_DATA2_FAILURE";
+
+export const getData2 = () => dispatch => {
+  dispatch({ type: FETCH_DATA2_START });
+  axios
+    //57
+    .get(`https://testsite.akiradj.com/categories/`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: FETCH_DATA2_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: FETCH_DATA2_FAILURE, payload: err.response });
     });
 };
 
@@ -63,10 +94,10 @@ export const deleteArticle = (id, user_id) => dispatch => {
     .delete(`https://testsite.akiradj.com/users/${user_id}/articles/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
-    .then(res => console.log("data", res))
     .then(res => {
-      dispatch({ type: DELETE_SUCCESS, payload: res.data.user });
+      window.location.reload();
     })
+
     .catch(err => {
       dispatch({ type: DELETE_FAILURE, payload: err.response });
     });
@@ -84,6 +115,24 @@ export const addStudy = study => dispatch => {
     })
     .then(res => {
       dispatch({ type: ADD_STUDY_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const ADD_BOARD_START = "ADD_BOARD_START";
+export const ADD_BOARD_SUCCESS = "ADD_BOARD_SUCCESS";
+export const ADD_BOARD_FAILURE = "ADD_BOARD_FAILURE";
+
+export const addBoard = (name, id) => dispatch => {
+  dispatch({ type: ADD_BOARD_START });
+  axios
+    .post(`https://testsite.akiradj.com/users/${id}/articles/category`, name, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: ADD_BOARD_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);

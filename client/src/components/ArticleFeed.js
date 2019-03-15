@@ -22,8 +22,6 @@ class ArticleFeed extends React.Component {
     this.props.deleteArticle(id, user_id);
   };
   render() {
-    console.log(this.props.articles);
-
     return (
       <div className="articles">
         {this.props.articles.map(article => (
@@ -42,7 +40,7 @@ class ArticleFeed extends React.Component {
             </a>
 
             <RemoveCircleOutlineRed
-              onClick={() => this.deleteArticle(article.id, article.user_id)}
+              onClick={() => this.deleteArticle(article.id, article.userid)}
             />
           </div>
         ))}

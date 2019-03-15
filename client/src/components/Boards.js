@@ -1,19 +1,9 @@
 import React from "react";
-
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Categories } from "styled-icons/boxicons-solid/Categories";
-import { Pin } from "styled-icons/boxicons-solid/Pin";
-
-import { addStudy } from "../actions";
-
-const PinRed = styled(Pin)`
-  color: red;
-  height: 30px;
-  width: 30px;
-  transform: rotate(-20deg);
-`;
+import { addBoard } from "../actions";
 
 const CategoriesBlack = styled(Categories)`
   color: red;
@@ -25,35 +15,27 @@ const CategoriesBlack = styled(Categories)`
 
 class Boards extends React.Component {
   state = {
-    study: {
-      link: "",
-      user_id: "",
-      title: "",
-      cover_page: ""
+    body: {
+      name: ""
     }
   };
 
   changeHandler = e => {
     this.setState({
-      study: {
-        [e.target.name]: e.target.value,
-        user_id: this.props.id,
-        title: "test title",
-        cover_page: "test cover page"
+      body: {
+        [e.target.name]: e.target.value
       }
     });
   };
 
-  addStudy = e => {
+  addBoard = e => {
     e.preventDefault();
-    console.log("FORM STATE:", this.state.study);
-    this.props.addStudy(this.state.study);
+
+    this.props.addBoard(this.state.body, this.props.id);
     this.props.history.push("/home");
     this.setState({
-      study: {
-        link: "",
-        id: "",
-        pinTitle: ""
+      body: {
+        name: ""
       }
     });
   };
@@ -67,24 +49,18 @@ class Boards extends React.Component {
             Create a Board
           </h2>
 
-          <form onSubmit={this.addStudy}>
+          <form onSubmit={this.addBoard}>
             <div className="top">
               <input
-                type="test"
-                name="category"
+                type="text"
+                name="name"
                 placeholder="Board Name"
                 onChange={this.changeHandler}
-                value={this.state.study.category}
+                value={this.state.body.name}
                 required
               />
-              <div className="radios">
-                <input type="radio" name="status" value="private" /> Private
-                (only visible to you)
-                <input type="radio" name="status" value="public" /> Public
-                (visible to everyone)
-              </div>
               <button>
-                {this.props.addingStudy ? (
+                {this.props.addingButton ? (
                   <Loader
                     type="TailSpin"
                     color="white"
@@ -103,12 +79,12 @@ class Boards extends React.Component {
   }
 }
 
-const mapStateToProps = ({ addingStudy, id }) => ({
-  addingStudy,
+const mapStateToProps = ({ addingBoard, id }) => ({
+  addingBoard,
   id
 });
 
 export default connect(
   mapStateToProps,
-  { addStudy }
+  { addBoard }
 )(Boards);

@@ -1,13 +1,10 @@
 import React from "react";
-import { Route, NavLink } from "react-router-dom";
-import { Home } from "styled-icons/boxicons-regular/Home";
-import { Search } from "styled-icons/boxicons-regular/Search";
-import { Categories } from "styled-icons/boxicons-solid/Categories";
-import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
-import { Notifications } from "styled-icons/material/Notifications";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
+import { Home } from "styled-icons/boxicons-regular/Home";
+import { Categories } from "styled-icons/boxicons-solid/Categories";
 import { Pin } from "styled-icons/boxicons-solid/Pin";
+import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
 
 const PinRed = styled(Pin)`
   color: red;
@@ -29,12 +26,6 @@ const UserBlack = styled(UserDetail)`
   width: 30px;
 `;
 
-const SearchBlack = styled(Search)`
-  color: black;
-  height: 30px;
-  width: 30px;
-`;
-
 const HomeBlack = styled(Home)`
   color: black;
   height: 30px;
@@ -42,11 +33,6 @@ const HomeBlack = styled(Home)`
 `;
 
 const CategoriesBlack = styled(Categories)`
-  color: black;
-  height: 30px;
-  width: 30px;
-`;
-const NotificationBlack = styled(Notifications)`
   color: black;
   height: 30px;
   width: 30px;
