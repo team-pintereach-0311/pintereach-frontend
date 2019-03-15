@@ -1,33 +1,42 @@
 import {
-  LOGIN_START,
-  SIGNUP_START,
-  LOGIN_SUCCESS,
-  FETCH_DATA_START,
-  FETCH_DATA_FAILURE,
-  FETCH_DATA_SUCCESS,
-  DELETE_START,
-  DELETE_SUCCESS,
+  ADD_BOARD_START,
+  ADD_BOARD_SUCCESS,
   ADD_STUDY_START,
   ADD_STUDY_SUCCESS,
-  ADD_STUDY_FAILURE,
+  DELETE_START,
+  DELETE_SUCCESS,
+  FETCH_DATA2_START,
+  FETCH_DATA2_SUCCESS,
+  FETCH_DATA_FAILURE,
+  FETCH_DATA_START,
+  FETCH_DATA_SUCCESS,
+  LOGIN_START,
+  LOGIN_SUCCESS,
   LOGOUT_START,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  SIGNUP_START,
+  FETCH_DATA3_START,
+  FETCH_DATA3_SUCCESS
 } from "../actions";
 
 const initialState = {
-  addingStudy: false,
+  boards: [],
   articles: [],
-  loggingIn: false,
+  allArticles: [],
   error: "",
-  token: localStorage.getItem("token"),
-  fetchingArticles: false,
-  errorStatusCode: null,
-  signingUp: false,
   message: "",
+  token: localStorage.getItem("token"),
+  id: localStorage.getItem("id"),
+  errorStatusCode: null,
+  addingStudy: false,
+  loggingIn: false,
+  fetchingArticles: false,
+  signingUp: false,
   deletingArticle: false,
-  id: 8,
-  loggingOut: false
+  loggingOut: false,
+  addingBoard: false,
+  fetchingBoards: false,
+  fetchingAllArticles: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -55,6 +64,33 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingArticles: true
+      };
+    case FETCH_DATA2_START:
+      return {
+        ...state,
+        fetchingBoards: true
+      };
+    case FETCH_DATA2_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        errorStatusCode: null,
+        fetchingArticles: false,
+        fetchingBoards: false,
+        boards: action.payload
+      };
+    case FETCH_DATA3_START:
+      return {
+        ...state,
+        fetchingAllArticles: true
+      };
+    case FETCH_DATA3_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        errorStatusCode: null,
+        fetchingAllArticles: false,
+        allArticles: action.payload
       };
     case FETCH_DATA_SUCCESS:
       return {
@@ -103,6 +139,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         logginOut: false
+      };
+    case ADD_BOARD_START:
+      return {
+        ...state,
+        addingBoard: true
+      };
+    case ADD_BOARD_SUCCESS:
+      return {
+        ...state,
+        addingBoard: false
       };
     default:
       return state;

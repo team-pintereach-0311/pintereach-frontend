@@ -1,11 +1,8 @@
 import React from "react";
-
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { Categories } from "styled-icons/boxicons-solid/Categories";
 import { Pin } from "styled-icons/boxicons-solid/Pin";
-
 import { addStudy } from "../actions";
 
 const PinRed = styled(Pin)`
@@ -15,102 +12,93 @@ const PinRed = styled(Pin)`
   transform: rotate(-20deg);
 `;
 
-const CategoriesBlack = styled(Categories)`
-  color: black;
-  height: 30px;
-  width: 30px;
-  padding-left: 10px;
-  padding-bottom: 5px;
-`;
-
 class AddStudyForm extends React.Component {
   state = {
     study: {
+      title: "",
+      cover_page: "whatever a coverpage is",
       link: "",
       user_id: "",
-      title: "",
-      cover_page: ""
+      categories_id: ""
     }
   };
 
   changeHandler = e => {
     this.setState({
       study: {
+        ...this.state.study,
         [e.target.name]: e.target.value,
-        user_id: this.props.id,
-        title: "test title",
-        cover_page: "test cover page"
+        user_id: this.props.id
       }
     });
   };
 
   addStudy = e => {
     e.preventDefault();
-    console.log("FORM STATE:", this.state.study);
     this.props.addStudy(this.state.study);
     this.props.history.push("/home");
     this.setState({
       study: {
+        title: "testing",
+        cover_page: "whatever a coverpage is",
         link: "",
-        id: "",
-        pinTitle: ""
+        user_id: this.props.id,
+        categories_id: ""
       }
     });
   };
 
   render() {
     return (
-      <div className="main">
-        <div className="add-study-form">
-          <form onSubmit={this.addStudy}>
-            <h2>
-              <PinRed /> Add Pins to your Board
-            </h2>
+      <>
+        <div className="main">
+          <div className="add-study-form">
+            <form onSubmit={this.addStudy}>
+              <h2>
+                <PinRed /> Add Pins to a Board
+              </h2>
 
-            <div className="board-name">
-              <label>Board Name</label>
-              <select name="cars">
-                <option value="volvo">PHYSICS 201</option>
-                <option value="saab">Politics</option>
-                <option value="fiat">Mathematics</option>
-                <option value="audi">Neuroscience</option>
-              </select>
-            </div>
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                onChange={this.changeHandler}
+                value={this.state.study.title}
+                required
+              />
+              <input
+                type="url"
+                name="link"
+                placeholder="Link"
+                onChange={this.changeHandler}
+                value={this.state.study.link}
+                required
+              />
+              <input
+                type="number"
+                name="categories_id"
+                placeholder="Board Id"
+                onChange={this.changeHandler}
+                value={this.state.study.categories_id}
+                required
+              />
 
-            <input
-              type="text"
-              name="pinTitle"
-              placeholder="Title"
-              onChange={this.changeHandler}
-              value={this.state.study.link}
-              required
-            />
-            <input
-              type="url"
-              name="link"
-              placeholder="Link"
-              onChange={this.changeHandler}
-              value={this.state.study.link}
-              required
-            />
-            <input
-              type="text"
-              name="pinTitle"
-              placeholder="Category"
-              onChange={this.changeHandler}
-              value={this.state.study.link}
-              required
-            />
-            <button>
-              {this.props.addingStudy ? (
-                <Loader type="TailSpin" color="white" height={18} width={18} />
-              ) : (
-                "Add Pin"
-              )}
-            </button>
-          </form>
+              <button>
+                {this.props.addingStudy ? (
+                  <Loader
+                    type="TailSpin"
+                    color="white"
+                    height={18}
+                    width={18}
+                  />
+                ) : (
+                  "Add Pin"
+                )}
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

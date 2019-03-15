@@ -1,13 +1,13 @@
 import React from "react";
-import "./App.css";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import PrivateRoute from "./components/PrivateRoute";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import UserHome from "./components/UserHome";
+import "./App.css";
 import AddStudyForm from "./components/AddStudyForm";
-import NavBar from "./components/NavBar";
 import Boards from "./components/Boards";
+import Login from "./components/Login";
+import NavBar from "./components/NavBar";
+import PrivateRoute from "./components/PrivateRoute";
+import Signup from "./components/Signup";
+import UserHome from "./components/UserHome";
 import UserProfile from "./components/UserProfile";
 
 export default function App() {
