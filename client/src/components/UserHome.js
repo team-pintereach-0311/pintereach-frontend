@@ -1,96 +1,126 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { NavLink, Route } from "react-router-dom";
-import ArticleFeed from "./ArticleFeed";
+import { Link, Route } from "react-router-dom";
 import styled from "styled-components";
-import { Home } from "styled-icons/boxicons-regular/Home";
-import { Search } from "styled-icons/boxicons-regular/Search";
-import { Categories } from "styled-icons/boxicons-solid/Categories";
-import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
-import { getData } from "../actions";
-import UserProfile from "./UserProfile";
-import UserCategories from "./UserCategories";
+import { PlusCircle } from "styled-icons/boxicons-regular/PlusCircle";
+import { deleteArticle, getData, getData2, getData3 } from "../actions";
+import ArticleFeed from "./ArticleFeed";
+import BoardFeed from "./BoardFeed";
 
-const UserBlack = styled(UserDetail)`
-  color: #000;
-  height: 30px;
-  width: 30px;
-`;
-
-const SearchBlack = styled(Search)`
-  color: #000;
-  height: 30px;
-  width: 30px;
-`;
-
-const HomeBlack = styled(Home)`
-  color: #000;
-  height: 30px;
-  width: 30px;
-`;
-
-const CategoriesBlack = styled(Categories)`
-  color: #000;
-  height: 30px;
-  width: 30px;
+const AddWhite = styled(PlusCircle)`
+  color: white;
+  height: 25px;
+  width: 25px;
 `;
 
 class UserHome extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showMessage: false
+    };
+  }
+
   componentDidMount() {
-    this.props.getData();
+    this.props.getData(this.props.id);
+    this.props.getData2(this.props.id);
+    this.props.getData3();
+
+    // setTimeout(() => this.setState({ showMessage: false }), 2000);
   }
 
   render() {
     if (this.props.fetchingArticles) {
-      return <Loader type="TailSpin" color="blue" height={80} width={80} />;
+      return (
+        <div className="loader">
+          <Loader type="TailSpin" color="#005995" height={40} width={40} />
+        </div>
+      );
     }
+
+    if (this.state.showMessage) {
+      return (
+        <div className="message">
+          <p>{this.props.message}</p>
+        </div>
+      );
+    }
+
     return (
       <div className="main">
-        <div className="navbar">
-          <ul>
-            <li>
-              <NavLink exact to="/home" activeClassName="active">
-                <HomeBlack /> Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/categories" activeClassName="active">
-                <CategoriesBlack /> Categories
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/search" activeClassName="active">
-                <SearchBlack /> Search
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile" activeClassName="active">
-                <UserBlack /> Profile
-              </NavLink>
-            </li>
-          </ul>
+        <div className="feed">
+          <h2>Board Feed</h2>
+
+          <Route
+            exact
+            path="/home"
+            render={props => (
+              <div className="home2">
+                <BoardFeed
+                  {...props}
+                  boards={this.props.boards}
+                  articles={this.props.allArticles}
+                />
+              </div>
+            )}
+          />
         </div>
-        <Route
-          exact
-          path="/home"
-          render={props => (
-            <ArticleFeed {...props} articles={this.props.articles} />
-          )}
-        />
-        <Route exact path="/categories" component={UserCategories} />
-        <Route exact path="/profile" componet={UserProfile} />
+        <div className="side">
+          <Link to="/add-board">
+            <button>
+              <AddWhite />
+              Add Board
+            </button>
+          </Link>
+          <Link to="/add-pin">
+            <button className="last">
+              <AddWhite />
+              Add Pin
+            </button>
+          </Link>
+          <Route
+            exact
+            path="/home"
+            render={props => (
+              <div className="home">
+                <div className="title-block">
+                  <h2>Your Pins</h2>
+                  <div className="btns" />
+                </div>
+                <ArticleFeed
+                  {...props}
+                  articles={this.props.articles}
+                  deleteArticle={this.props.deleteArticle}
+                />
+              </div>
+            )}
+          />
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ articles, fetchingArticles }) => ({
+const mapStateToProps = ({
   articles,
-  fetchingArticles
+  fetchingArticles,
+  message,
+  deletingArticle,
+  id,
+  boards,
+  allArticles
+}) => ({
+  articles,
+  fetchingArticles,
+  message,
+  deletingArticle,
+  id,
+  boards,
+  allArticles
 });
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, deleteArticle, getData2, getData3 }
 )(UserHome);

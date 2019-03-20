@@ -1,59 +1,65 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { Route, NavLink } from "react-router-dom";
-import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
-import { Search } from "styled-icons/boxicons-regular/Search";
 import { Home } from "styled-icons/boxicons-regular/Home";
 import { Categories } from "styled-icons/boxicons-solid/Categories";
-import UserProfile from "./UserProfile";
+import { Pin } from "styled-icons/boxicons-solid/Pin";
+import { UserDetail } from "styled-icons/boxicons-solid/UserDetail";
 
-const UserBlack = styled(UserDetail)`
-  color: #000;
+const PinRed = styled(Pin)`
+  color: red;
   height: 30px;
   width: 30px;
+  transform: rotate(-20deg);
 `;
 
-const SearchBlack = styled(Search)`
-  color: #000;
+const PinBlack = styled(Pin)`
+  color: black;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-20deg);
+`;
+
+const UserBlack = styled(UserDetail)`
+  color: black;
   height: 30px;
   width: 30px;
 `;
 
 const HomeBlack = styled(Home)`
-  color: #000;
+  color: black;
   height: 30px;
   width: 30px;
 `;
 
 const CategoriesBlack = styled(Categories)`
-  color: #000;
+  color: black;
   height: 30px;
   width: 30px;
 `;
 
-const NavBar = props => {
+const NavBar = () => {
   return (
     <div className="navbar">
-      <li>
-        <NavLink activeClassName="active" exact to="/home">
-          <HomeBlack />
-        </NavLink>
-      </li>
-      <li>
-        <NavLink activeClassName="active" exact to="/categories">
-          <CategoriesBlack />
-        </NavLink>
-      </li>
-      <li>
-        <NavLink activeClassName="active" exact to="/search">
-          <SearchBlack />
-        </NavLink>
-      </li>
-      <li>
-        <NavLink activeClassName="active" exact to="/user">
-          <UserBlack />
-        </NavLink>
-      </li>
+      <h1>
+        <PinRed />
+        Pintereach
+      </h1>
+      <NavLink exact to="/home" activeClassName="activeNavBtn">
+        <HomeBlack />
+      </NavLink>
+
+      <NavLink exact to="/add-board" activeClassName="activeNavBtn">
+        <CategoriesBlack />
+      </NavLink>
+
+      <NavLink exact to="/add-pin" activeClassName="activeNavBtn">
+        <PinBlack />
+      </NavLink>
+
+      <NavLink to="/profile" activeClassName="activeNavBtn">
+        <UserBlack />
+      </NavLink>
     </div>
   );
 };
